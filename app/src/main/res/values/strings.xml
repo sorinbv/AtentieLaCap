@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Atentie la cap!</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="in_game">In Game</string>
+    <string name="play">Play</string>
+    <string name="info">Info</string>
+    <string name="splash">Splash</string>
+    <string name="rezultate">Rezultate</string>
+    <string name="tab">Tab</string>
+    <string name="icon_heart">&#xf004;</string>
+
+</resources>

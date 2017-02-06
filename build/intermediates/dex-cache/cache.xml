@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="false"
+        jar="C:\Users\sorin.donosa\AndroidStudioProjects\AtentieLaCap\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.4.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="548f06de403a9409f00554b3ee12a9fdea0e236c">
+        <dex dex="C:\Users\sorin.donosa\AndroidStudioProjects\AtentieLaCap\app\build\intermediates\pre-dexed\debug\com.android.support-appcompat-v7-23.4.0_c9a24545cc30c1f9ca2ab7572c85fdf992541a19.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\sorin.donosa\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\25.1.0\support-annotations-25.1.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="64cb6b229a8bdfd907bc8dd46839a0053e4c018d">
+        <dex dex="C:\Users\sorin.donosa\AndroidStudioProjects\AtentieLaCap\app\build\intermediates\pre-dexed\debug\support-annotations-25.1.0_f54bb8e46cc14326109cac81563842ae9c514e9d.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\sorin.donosa\AndroidStudioProjects\AtentieLaCap\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\jars\libs\internal_impl-23.4.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="ea3c07504d2c8f4b13aa17c45c1b68ed9c1c3674">
+        <dex dex="C:\Users\sorin.donosa\AndroidStudioProjects\AtentieLaCap\app\build\intermediates\pre-dexed\debug\internal_impl-23.4.0_619a650ce64a546824a10c8dedd0f0765c6bddd5.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\sorin.donosa\AndroidStudioProjects\AtentieLaCap\app\build\intermediates\exploded-aar\com.android.support\gridlayout-v7\25.1.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="c83fbde55c05bc186002d7ce3570d619c3d6ee1f">
+        <dex dex="C:\Users\sorin.donosa\AndroidStudioProjects\AtentieLaCap\app\build\intermediates\pre-dexed\debug\com.android.support-gridlayout-v7-25.1.0_9e10c3a84c7e228607dd466c3e7c8b596db0cb23.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\sorin.donosa\AndroidStudioProjects\AtentieLaCap\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\23.4.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="de4db3785756bfb0915a9f59a9b3f2fea7407be4">
+        <dex dex="C:\Users\sorin.donosa\AndroidStudioProjects\AtentieLaCap\app\build\intermediates\pre-dexed\debug\com.android.support-animated-vector-drawable-23.4.0_e89500cf5e7e6b837258215be2281fb51af2c1a5.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\sorin.donosa\AndroidStudioProjects\AtentieLaCap\app\build\intermediates\exploded-aar\com.android.support\support-compat\25.1.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="ca3c7aa31e2726a400a6e552b93cb9f63c9a1e6d">
+        <dex dex="C:\Users\sorin.donosa\AndroidStudioProjects\AtentieLaCap\app\build\intermediates\pre-dexed\debug\com.android.support-support-compat-25.1.0_6f55ef20af7de60afdf7003b60d2133016e91935.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\sorin.donosa\AndroidStudioProjects\AtentieLaCap\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.4.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="c2c594cace5d83a3227b2b6e658ecbfd586d3ed9">
+        <dex dex="C:\Users\sorin.donosa\AndroidStudioProjects\AtentieLaCap\app\build\intermediates\pre-dexed\debug\com.android.support-support-vector-drawable-23.4.0_4a8830a98cdb0bd0da1c600f3baba64e6c20e751.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\sorin.donosa\AndroidStudioProjects\AtentieLaCap\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="67bd36ee9340ec7c254108936ad16b24bed160cc">
+        <dex dex="C:\Users\sorin.donosa\AndroidStudioProjects\AtentieLaCap\app\build\intermediates\pre-dexed\debug\com.android.support-support-v4-23.4.0_c000d83148dddc2b0dd9e276b57c16eb67a0121c.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\sorin.donosa\AndroidStudioProjects\AtentieLaCap\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\25.1.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="aee64634871d88a419d59eb743c1258a60f19700">
+        <dex dex="C:\Users\sorin.donosa\AndroidStudioProjects\AtentieLaCap\app\build\intermediates\pre-dexed\debug\com.android.support-support-core-ui-25.1.0_715506cd8091b036ea71d352b50d046ebf217a54.jar" />
+    </item>
+
+</items>

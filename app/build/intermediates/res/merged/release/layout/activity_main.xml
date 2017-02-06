@@ -1,0 +1,244 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layoutGrid"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="sorindonosa.cinesunt.MainActivity">
+
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="0dp"
+        android:layout_weight="3">
+
+        <Button
+            android:id="@+id/btnFb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_marginRight="1dp"
+            android:layout_weight="1"
+            android:height="40dp"
+            android:drawableTop="@drawable/ic_facebook"
+            android:gravity="center"
+            android:paddingRight="1dp" />
+
+        <Button
+            android:id="@+id/btnAnother"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="1dp"
+            android:layout_marginRight="1dp"
+            android:layout_weight="1"
+            android:height="40dp"
+            android:drawableTop="@drawable/ic_star_button" />
+
+        <Button
+            android:id="@+id/btnSame"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginLeft="1dp"
+            android:layout_weight="1"
+            android:height="40dp"
+            android:alpha="128"
+            android:drawableTop="@drawable/ic_inform"
+            android:gravity="center_vertical|center_horizontal" />
+    </LinearLayout>
+
+    <ScrollView
+        android:id="@+id/scrollView1"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/linearLayout">
+
+        <LinearLayout
+            android:id="@+id/linearLayout1"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/btnActori"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_video_camera"
+                android:gravity="right|center_vertical|center_horizontal"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:text="ACTORI DE LA HOLLYWOOD"
+                android:textSize="26sp" />
+
+            <Button
+                android:id="@+id/btnAnimale"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_dog"
+                android:gravity="right|center_vertical|center_horizontal"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:text="ANIMALE"
+                android:textSize="26sp" />
+
+            <Button
+                android:id="@+id/btnCelebritati"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_celebritati"
+                android:gravity="right|center_vertical|center_horizontal"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:text="CELEBRITĂȚI ROMÂNEȘTI"
+                android:textSize="26sp" />
+
+            <Button
+                android:id="@+id/btnCapitale"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_earth_globe"
+                android:gravity="right|center_vertical|center_horizontal"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:text="CAPITALE"
+                android:textSize="26sp" />
+
+            <Button
+                android:id="@+id/btnEmotii"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_theater"
+                android:gravity="right|center_vertical|center_horizontal"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:text="EMOȚII"
+                android:textSize="26sp" />
+
+            <Button
+                android:id="@+id/btnRock"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_drum"
+                android:gravity="right|center_vertical|center_horizontal"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:text="LEGENDE ROCK"
+                android:textSize="26sp" />
+
+            <Button
+                android:id="@+id/btnMeserii"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_manager"
+                android:gravity="right|center_vertical|center_horizontal"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:text="MESERII"
+                android:textSize="26sp" />
+
+            <Button
+                android:id="@+id/btnPersonaje"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_desene"
+                android:gravity="right|center_vertical|center_horizontal"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:text="PERSONAJE DIN DESENE ANIMATE"
+                android:textSize="26sp" />
+
+            <Button
+                android:id="@+id/btnPlante"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_broccoli"
+                android:gravity="right|center_vertical|center_horizontal"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:text="PLANTE"
+                android:textSize="26sp" />
+
+            <Button
+                android:id="@+id/btnProverbe"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_proverbe"
+                android:gravity="right|center_vertical|center_horizontal"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:text="PROVERBE"
+                android:textSize="26sp" />
+
+            <Button
+                android:id="@+id/btnSporturi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_basketball"
+                android:gravity="right|center_vertical|center_horizontal"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:text="SPORTURI"
+                android:textSize="26sp" />
+
+            <Button
+                android:id="@+id/btnCasnice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_casnice"
+                android:gravity="right|center_vertical|center_horizontal"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:text="OBIECTE DIN CASĂ"
+                android:textSize="26sp" />
+
+            <Button
+                android:id="@+id/btnDota"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_dota2"
+                android:gravity="right|center_vertical|center_horizontal"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:text="DOTA 2"
+                android:textSize="26sp" />
+
+            <Button
+                android:id="@+id/btnChimie"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_chemistry"
+                android:gravity="right|center_vertical|center_horizontal"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:text="ELEMENTE CHIMICE"
+                android:textSize="26sp" />
+
+            <Button
+                android:id="@+id/btnFizica"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_atomic"
+                android:gravity="right|center_vertical|center_horizontal"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:text="FIZICĂ"
+                android:textSize="26sp" />
+
+            <Button
+                android:id="@+id/btnMaiMulte"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_maimulte"
+                android:gravity="right|center_vertical|center_horizontal"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:text="VERIFICĂ NOI CATEGORII"
+                android:textSize="26sp" />
+        </LinearLayout>
+    </ScrollView>
+
+
+</RelativeLayout>

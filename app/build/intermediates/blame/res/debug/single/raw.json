@@ -1,0 +1,22 @@
+[
+    {
+        "merged": "C:\\Users\\sorin.donosa\\AndroidStudioProjects\\AtentieLaCap\\app\\build\\intermediates\\res\\merged\\debug\\raw\\three_seconds.mp3",
+        "source": "C:\\Users\\sorin.donosa\\AndroidStudioProjects\\AtentieLaCap\\app\\src\\main\\res\\raw\\three_seconds.mp3"
+    },
+    {
+        "merged": "C:\\Users\\sorin.donosa\\AndroidStudioProjects\\AtentieLaCap\\app\\build\\intermediates\\res\\merged\\debug\\raw\\begin_sound.mp3",
+        "source": "C:\\Users\\sorin.donosa\\AndroidStudioProjects\\AtentieLaCap\\app\\src\\main\\res\\raw\\begin_sound.mp3"
+    },
+    {
+        "merged": "C:\\Users\\sorin.donosa\\AndroidStudioProjects\\AtentieLaCap\\app\\build\\intermediates\\res\\merged\\debug\\raw\\corect.mp3",
+        "source": "C:\\Users\\sorin.donosa\\AndroidStudioProjects\\AtentieLaCap\\app\\src\\main\\res\\raw\\corect.mp3"
+    },
+    {
+        "merged": "C:\\Users\\sorin.donosa\\AndroidStudioProjects\\AtentieLaCap\\app\\build\\intermediates\\res\\merged\\debug\\raw\\final_sound.mp3",
+        "source": "C:\\Users\\sorin.donosa\\AndroidStudioProjects\\AtentieLaCap\\app\\src\\main\\res\\raw\\final_sound.mp3"
+    },
+    {
+        "merged": "C:\\Users\\sorin.donosa\\AndroidStudioProjects\\AtentieLaCap\\app\\build\\intermediates\\res\\merged\\debug\\raw\\pass.mp3",
+        "source": "C:\\Users\\sorin.donosa\\AndroidStudioProjects\\AtentieLaCap\\app\\src\\main\\res\\raw\\pass.mp3"
+    }
+]
