@@ -1,9 +1,5 @@
 package sorindonosa.cinesunt;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
@@ -22,25 +18,54 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.InterstitialAd;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class Play extends Activity implements SensorEventListener {
-
-    private TextView cuvant, ceas, tip;
-    private RelativeLayout rLayout;
-    private MediaPlayer mp, sCorect, sPass;
-    LinearLayout linLayout;
-
-    private List<String> lista = new ArrayList<String>();
-    private List<String> lista2 = new ArrayList<String>();
-
-    private SensorManager sensorMan;
-    private Sensor accelerometer;
 
     public static List<String> listaRezultateString = new ArrayList<String>();
     public static List<Integer> listaRezultateInt = new ArrayList<Integer>();
     public static int scor;
+    LinearLayout linLayout;
+    private TextView cuvant, ceas, tip;
+    private RelativeLayout rLayout;
+    private MediaPlayer mp, sCorect, sPass;
+    private List<String> lista = new ArrayList<String>();
+    private List<String> lista2 = new ArrayList<String>();
+    private SensorManager sensorMan;
+    private Sensor accelerometer;
     private CountDownTimer cT;
     private boolean ev = true;
+    CountDownTimer ctWait = new CountDownTimer(1700, 1000) {
+        @Override
+        public void onTick(long millisUntilFinished) {
+            ev = false;
+        }
+
+        @Override
+        public void onFinish() {
+            ev = true;
+        }
+    };
     private int culoareDeschisa = Color.parseColor("#c0dfd9");
+    CountDownTimer ctCuloare = new CountDownTimer(500, 1000) {
+        @Override
+        public void onTick(long millisUntilFinished) {
+
+        }
+
+        @Override
+        public void onFinish() {
+            rLayout.setBackgroundColor(culoareDeschisa);
+            linLayout.setBackgroundColor(culoareDeschisa);
+        }
+    };
+    private InterstitialAd interAd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,6 +110,22 @@ public class Play extends Activity implements SensorEventListener {
         rLayout.setBackgroundColor(culoareDeschisa);
 
         mp = MediaPlayer.create(getApplicationContext(), R.raw.final_sound);
+
+        interAd = new InterstitialAd(this);
+        interAd.setAdUnitId("ca-app-pub-1675138020340294/8224306365");
+
+        interAd.setAdListener(new AdListener() {
+            @Override
+            public void onAdClosed() {
+                Intent myIntent = new Intent(Play.this, Rezultate.class);
+                startActivity(myIntent);
+            }
+        });
+        requestNewInterstitial();
+
+
+        AdRequest adRequest = new AdRequest.Builder().build();
+        interAd.loadAd(adRequest);
 
         if (MainActivity.getCategorie().equals("Actori")) {
             List<String> listAuxiliara = Arrays.asList("Patrick Swayze", "Kevin Bacon", "Benicio Del Toro",
@@ -256,7 +297,7 @@ public class Play extends Activity implements SensorEventListener {
             lista.remove(lista.get(index));
         }
 
-        if (MainActivity.getCategorie().equals("Celebritati")) {
+/*        if (MainActivity.getCategorie().equals("Celebritati")) {
             tip.setVisibility(View.VISIBLE);
             List<String> listAuxiliara = Arrays.asList("Cătălin Măruță", "Inna", "Alexandra Stan", "Mircea Badea",
                     "Cristi Minculescu", "Lucian Mândruță", "Traian Băsescu", "Maia Morgenstern", "Stela Popescu",
@@ -336,7 +377,7 @@ public class Play extends Activity implements SensorEventListener {
             listaRezultateString.add(lista.get(index));
             lista.remove(index);
             lista2.remove(index);
-        }
+        }*/
 
         if (MainActivity.getCategorie().equals("Proverbe")) {
             List<String> listAuxiliara = Arrays.asList("A ierta e uşor, a uita e greu", "Amânarea e hoţul timpului",
@@ -567,6 +608,330 @@ public class Play extends Activity implements SensorEventListener {
             lista.remove(lista.get(index));
         }
 
+        if (MainActivity.getCategorie().equals("Masini")) {
+            List<String> listAuxiliara = Arrays.asList("Ford Focus",
+                    "Ford Fiesta",
+                    "Ford Escort",
+                    "Ford Ka",
+                    "Ford Mondeo",
+                    "Ford Fusion",
+                    "Ford Taurus",
+                    "Focus Mustang",
+                    "Ford GT",
+                    "Ford B-Max",
+                    "Ford C-Max",
+                    "Ford Kuga",
+                    "Ford Flex",
+                    "Ford Edge",
+                    "Ford Expedition",
+                    "Ford Explorer",
+                    "Ford Transit",
+                    "Fiat Bravo",
+                    "Fiat Punto",
+                    "Fiat 500",
+                    "Fiat Panda",
+                    "Fiat Uno",
+                    "Fiat Tipo",
+                    "Fiat Freemont",
+                    "Fiat Linea",
+                    "Fiat Sedici",
+                    "Fiat Albea",
+                    "Fiat Idea",
+                    "Dacia Duster",
+                    "Dacia Sandero",
+                    "Dacia 1300",
+                    "Dacia Solenza",
+                    "Dacia Lodgy",
+                    "Dacia Logan",
+                    "Dacia Dokker",
+                    "Dacia Nova",
+                    "Hyundai i10",
+                    "Hyundai i20",
+                    "Hyundai i30",
+                    "Hyundai i40",
+                    "Hyundai Elantra",
+                    "Hyundai Tucson",
+                    "Hyundai ix35",
+                    "Hyundai Sonata",
+                    "Hyundai Genesis",
+                    "Hyundai Santa Fe",
+                    "Honda Accord",
+                    "Honda Civic",
+                    "Honda Jazz",
+                    "Honda NSX",
+                    "Mazda 2",
+                    "Mazda 3",
+                    "Mazda 6",
+                    "Mazda MX-5",
+                    "Mazda MX-3",
+                    "Mazda CX-3",
+                    "Mazda CX-5",
+                    "Mazda CX-9",
+                    "Mazda RX-8",
+                    "Mitsubishi Lancer",
+                    "Mitsubishi ASX",
+                    "Mitsubishi Pajero",
+                    "Mitsubishi L200",
+                    "Skoda Yeti",
+                    "Skoda Roomster",
+                    "Skoda Superb",
+                    "Skoda Rapid",
+                    "Skoda Fabia",
+                    "Skoda Mission",
+                    "Range Rover Evoque",
+                    "Range Rover Sport",
+                    "Land Rover Discovery",
+                    "Land Rover Freelander",
+                    "Land Rover Defender",
+                    "Land Rover Series",
+                    "Volkswagen Beetle",
+                    "Volkswagen Amarok",
+                    "Volkswagen Caddy",
+                    "Volkswagen Passat CC",
+                    "Volkswagen Passat",
+                    "Volkswagen Golf",
+                    "Volkswagen Jetta",
+                    "Volkswagen Scirocco",
+                    "Volkswagen Sharan",
+                    "Volkswagen Tiguan",
+                    "Volkswagen Touareg",
+                    "Volkswagen Touran",
+                    "Volkswagen Eos",
+                    "Volkswagen Lupo",
+                    "Volkswagen Fox",
+                    "Volkswagen Up!",
+                    "BMW Seria 1",
+                    "BMW Seria 2",
+                    "BMW Seria 3",
+                    "BMW Seria 4",
+                    "BMW Seria 5",
+                    "BMW Seria 6",
+                    "BMW Seria 7",
+                    "BMW X1",
+                    "BMW X3",
+                    "BMW X5",
+                    "BMW X6",
+                    "Audi Quattro",
+                    "Audi 80",
+                    "Audi Coupe",
+                    "Audi A3",
+                    "Audi A4",
+                    "Audi A2",
+                    "Audi A6",
+                    "Audi A7",
+                    "Audi Q3",
+                    "Audi Q5",
+                    "Audi Q7",
+                    "Audi TT",
+                    "Audi A5",
+                    "Mercedes Clasa A",
+                    "Mercedes Clasa B",
+                    "Mercedes Clasa C",
+                    "Mercedes Clasa E",
+                    "Mercedes Clasa G",
+                    "Mercedes GLA",
+                    "Mercedes GLE",
+                    "Mercedes CLK",
+                    "Mercedes SLK",
+                    "Mercedes Citaro",
+                    "Mercedes Vito",
+                    "Citroën C1",
+                    "Citroën C2",
+                    "Citroën C3",
+                    "Citroën C4",
+                    "Citroën C5",
+                    "Citroën C6",
+                    "Citroën DS",
+                    "Citroën Saxo",
+                    "Citroën Xsara",
+                    "Citroën C4 Cactus",
+                    "Peugeot 206",
+                    "Peugeot 207",
+                    "Peugeot 208",
+                    "Peugeot 307",
+                    "Peugeot 308",
+                    "Peugeot 407",
+                    "Peugeot 508",
+                    "Peugeot 2008",
+                    "Peugeot 3008",
+                    "Peugeot Partner",
+                    "Renault Captur",
+                    "Renault Fluence",
+                    "Renault Kadjar",
+                    "Renault Kangoo",
+                    "Renault Megane",
+                    "Renault Scenic",
+                    "Renault Symbol",
+                    "Renault Twingo",
+                    "Renault Twizy",
+                    "Renault Zoe",
+                    "Renault Talisman",
+                    "Renault Laguna",
+                    "Opel Adam",
+                    "Opel Ampera",
+                    "Opel Astra",
+                    "Opel Corsa",
+                    "Opel Insignia",
+                    "Opel Karl",
+                    "Opel Meriva",
+                    "Opel Mokka",
+                    "Opel Zafira",
+                    "Opel Astra OPC",
+                    "Opel Kadett",
+                    "Opel Vectra",
+                    "Opel Signum",
+                    "Ferrari Enzo",
+                    "Ferrari LaFerrari",
+                    "Ferrari F40",
+                    "Ferrari F50",
+                    "Lamborghini Gallardo",
+                    "Lamborghini Miura",
+                    "Lamborghini Murciélago",
+                    "Lamborghini Diablo",
+                    "Lamborghini Reventón",
+                    "Lamborghini Aventador",
+                    "Nissan Altima",
+                    "Nissan Juke",
+                    "Nissan Qashqai",
+                    "Nissan X-Trail",
+                    "Nissan Pathfinder",
+                    "Nissan Murano",
+                    "Nissan Note",
+                    "Infiniti I35",
+                    "Infiniti M56",
+                    "Infiniti JX35",
+                    "Infiniti Q50 S Hybrid",
+                    "Lada Niva",
+                    "Lada Kalina",
+                    "Lada Vesta",
+                    "Kia Cee'd",
+                    "Kia Rio",
+                    "Kia Picanto",
+                    "Kia Forte",
+                    "Kia Sportage",
+                    "Kia Sorento",
+                    "Seat Ibiza",
+                    "Seat Cordoba",
+                    "Seat Leon",
+                    "Seat Altea",
+                    "Seat Toledo",
+                    "Seat Exeo",
+                    "Aston Martin DB9",
+                    "Aston Martin One-77",
+                    "Aston Martin Cygnet",
+                    "Aston Martin DB11",
+                    "Rolls-Royce Ghost",
+                    "Rolls-Royce Wraith",
+                    "Rolls-Royce Phantom",
+                    "Cadillac Deville",
+                    "Cadillac Escalade",
+                    "Chevrolet Spark",
+                    "Chevrolet Bolt",
+                    "Chevrolet Cruze",
+                    "Chevrolet Malibu",
+                    "Chevrolet Camaro",
+                    "Chevrolet Equinox",
+                    "Jeep Grand Cherokee",
+                    "Jeep Wrangler",
+                    "Jeep Patriot",
+                    "Jeep Liberty",
+                    "Alfa Romeo MiTo",
+                    "Alfa Romeo Giulietta",
+                    "Alfa Romeo Giulia",
+                    "Alfa Romeo 4C",
+                    "Alfa Romeo Spider"
+            );
+            lista.addAll(listAuxiliara);
+            int index = (int) (Math.random() * (lista.size() - 1));
+            cuvant.setText(lista.get(index));
+            listaRezultateString.add(lista.get(index));
+            lista.remove(lista.get(index));
+        }
+
+        if (MainActivity.getCategorie().equals("Mortal")) {
+            List<String> listAuxiliara = Arrays.asList("Liu Kang",
+                    "Johnny Cage",
+                    "Kano",
+                    "Raiden",
+                    "Scorpion",
+                    "Sonya Blade",
+                    "Sub-Zero",
+                    "Goro",
+                    "Shang Tsung",
+                    "Reptile",
+                    "Baraka",
+                    "Jax",
+                    "Kitana",
+                    "Kung Lao",
+                    "Mileena",
+                    "Kintaro",
+                    "Shao Kahn",
+                    "Jade",
+                    "Noob Saibot",
+                    "Smoke",
+                    "Cyrax",
+                    "Sektor",
+                    "Kabal",
+                    "Nightwolf",
+                    "Sindel",
+                    "Sheeva",
+                    "Stryker",
+                    "Motaro",
+                    "Ermac",
+                    "Rain",
+                    "Chameleon",
+                    "Khameleon",
+                    "Fujin",
+                    "Jarek",
+                    "Kai",
+                    "Reiko",
+                    "Tanya",
+                    "Quan Chi",
+                    "Shinnok",
+                    "Meat",
+                    "Blaze",
+                    "Bo' Rai Cho",
+                    "Drahmin",
+                    "Frost",
+                    "Hsu Hao",
+                    "Kenshi",
+                    "Li Mei",
+                    "Mavado",
+                    "Mokap",
+                    "Moloch",
+                    "Nitara",
+                    "Sareena",
+                    "Ashrah",
+                    "Dairou",
+                    "Darrius",
+                    "Havik",
+                    "Hotaru",
+                    "Kira",
+                    "Kobra",
+                    "Onaga",
+                    "Shujinko",
+                    "Daegon",
+                    "Taven",
+                    "Skarlet",
+                    "Cyber Sub-Zero",
+                    "Cassie Cage",
+                    "D'Vorah",
+                    "Erron Black",
+                    "Ferra/Torr",
+                    "Jacqui Briggs",
+                    "Kotal Kahn",
+                    "Kung Jin",
+                    "Takeda",
+                    "Tremor",
+                    "Tri-Borg"
+            );
+            lista.addAll(listAuxiliara);
+            int index = (int) (Math.random() * (lista.size() - 1));
+            cuvant.setText(lista.get(index));
+            listaRezultateString.add(lista.get(index));
+            lista.remove(lista.get(index));
+        }
+
         if (MainActivity.getCategorie().equals("Dota")) {
             List<String> listAuxiliara = Arrays.asList("Anti-Mage", "Axe", "Crystal Maiden", "Dazzle", "Drow Ranger",
                     "Earthshaker", "Lich", "Lina", "Lion", "Mirana", "Morphling", "Necrophos", "Puck", "Pudge", "Razor",
@@ -595,6 +960,367 @@ public class Play extends Activity implements SensorEventListener {
             listaRezultateString.add(lista.get(index));
             lista.remove(lista.get(index));
         }
+
+
+        if (MainActivity.getCategorie().equals("Lol")) {
+            List<String> listAuxiliara = Arrays.asList("Aatrox",
+                    "Ahri",
+                    "Akali",
+                    "Alistar",
+                    "Amumu",
+                    "Anivia",
+                    "Annie",
+                    "Ashe",
+                    "Aurelion Sol",
+                    "Azir",
+                    "Bard",
+                    "Blitzcrank",
+                    "Brand",
+                    "Braum",
+                    "Caitlyn",
+                    "Camille",
+                    "Cassiopeia",
+                    "Cho'Gath",
+                    "Corki",
+                    "Darius",
+                    "Diana",
+                    "Dr. Mundo",
+                    "Draven",
+                    "Ekko",
+                    "Elise",
+                    "Evelynn",
+                    "Ezreal",
+                    "Fiddlesticks",
+                    "Fiora",
+                    "Fizz",
+                    "Galio",
+                    "Gangplank",
+                    "Garen",
+                    "Gnar",
+                    "Gragas",
+                    "Graves",
+                    "Hecarim",
+                    "Heimerdinger",
+                    "Illaoi",
+                    "Irelia",
+                    "Ivern",
+                    "Janna",
+                    "Jarvan IV",
+                    "Jax",
+                    "Jayce",
+                    "Jhin",
+                    "Jinx",
+                    "Kalista",
+                    "Karma",
+                    "Karthus",
+                    "Kassadin",
+                    "Katarina",
+                    "Kayle",
+                    "Kennen",
+                    "Kha'Zix",
+                    "Kindred",
+                    "Kled",
+                    "Kog'Maw",
+                    "LeBlanc",
+                    "Lee Sin",
+                    "Leona",
+                    "Lissandra",
+                    "Lucian",
+                    "Lulu",
+                    "Lux",
+                    "Malphite",
+                    "Malzahar",
+                    "Maokai",
+                    "Master Yi",
+                    "Miss Fortune",
+                    "Mordekaiser",
+                    "Morgana",
+                    "Nami",
+                    "Nasus",
+                    "Nautilus",
+                    "Nidalee",
+                    "Nocturne",
+                    "Nunu",
+                    "Olaf",
+                    "Orianna",
+                    "Pantheon",
+                    "Poppy",
+                    "Quinn",
+                    "Rammus",
+                    "Rek'Sai",
+                    "Renekton",
+                    "Rengar",
+                    "Riven",
+                    "Rumble",
+                    "Ryze",
+                    "Sejuani",
+                    "Shaco",
+                    "Shen",
+                    "Shyvana",
+                    "Singed",
+                    "Sion",
+                    "Sivir",
+                    "Skarner",
+                    "Sona",
+                    "Soraka",
+                    "Swain",
+                    "Syndra",
+                    "Tahm Kench",
+                    "Taliyah",
+                    "Talon",
+                    "Taric",
+                    "Teemo",
+                    "Thresh",
+                    "Tristana",
+                    "Trundle",
+                    "Tryndamere",
+                    "Twisted Fate",
+                    "Twitch",
+                    "Udyr",
+                    "Urgot",
+                    "Varus",
+                    "Vayne",
+                    "Veigar",
+                    "Vel'Koz",
+                    "Vi",
+                    "Viktor",
+                    "Vladimir",
+                    "Volibear",
+                    "Warwick",
+                    "Wukong",
+                    "Xerath",
+                    "Xin Zhao",
+                    "Yasuo",
+                    "Yorick",
+                    "Zac",
+                    "Zed",
+                    "Ziggs",
+                    "Zilean",
+                    "Zyra",
+                    "Abyssal Scepter",
+                    "Aegis of the Legion",
+                    "Aether Wisp",
+                    "Amplifying Tome",
+                    "Ancient Coin",
+                    "Arcane Sweeper",
+                    "Arcane Sweeper",
+                    "Archangel's Staff",
+                    "Archangel's Staff (Quick Charge)",
+                    "Ardent Censer",
+                    "Athene's Unholy Grail",
+                    "B. F. Sword",
+                    "Bami's Cinder",
+                    "Banner of Command",
+                    "Banshee's Veil",
+                    "Berserker's Greaves",
+                    "Bilgewater Cutlass",
+                    "Blade of the Ruined King",
+                    "Blasting Wand",
+                    "Boots of Mobility",
+                    "Boots of Speed",
+                    "Boots of Swiftness",
+                    "Brawler's Gloves",
+                    "Catalyst of Aeons",
+                    "Caulfield's Warhammer",
+                    "Chain Vest",
+                    "Chalice of Harmony",
+                    "Cloak of Agility",
+                    "Cloth Armor",
+                    "Control Ward",
+                    "Corrupting Potion",
+                    "Crystalline Bracer",
+                    "Cull",
+                    "Dagger",
+                    "Dead Man's Plate",
+                    "Death's Dance",
+                    "Death's Daughter",
+                    "Dervish Blade",
+                    "Diet Poro-Snax",
+                    "Doran's Blade",
+                    "Doran's Ring",
+                    "Doran's Shield",
+                    "Duskblade of Draktharr",
+                    "Edge of Night",
+                    "Elixir of Iron",
+                    "Elixir of Sorcery",
+                    "Elixir of Wrath",
+                    "Entropy Field",
+                    "Espresso Snax",
+                    "Essence Reaver",
+                    "Executioner's Calling",
+                    "Explorer's Ward",
+                    "Eye of the Equinox",
+                    "Eye of the Oasis",
+                    "Eye of the Watchers",
+                    "Face of the Mountain",
+                    "Faerie Charm",
+                    "Farsight Alteration",
+                    "Fiendish Codex",
+                    "Fire at Will",
+                    "Flash Zone",
+                    "Forbidden Idol",
+                    "Frost Queen's Claim",
+                    "Frosted Snax",
+                    "Frostfang",
+                    "Frozen Heart",
+                    "Frozen Mallet",
+                    "Giant Slayer",
+                    "Giant's Belt",
+                    "Glacial Shroud",
+                    "Golden Transcendence",
+                    "Golden Transcendence (Disabled)",
+                    "Greater Stealth Totem (Trinket)",
+                    "Greater Vision Totem (Trinket)",
+                    "Guardian Angel",
+                    "Guardian's Hammer",
+                    "Guardian's Horn",
+                    "Guardian's Orb",
+                    "Guinsoo's Rageblade",
+                    "Haunting Guise",
+                    "Health Potion",
+                    "Hexdrinker",
+                    "Hextech GLP-800",
+                    "Hextech Gunblade",
+                    "Hextech Protobelt-01",
+                    "Hextech Revolver",
+                    "Hunter's Machete",
+                    "Hunter's Potion",
+                    "Hunter's Talisman",
+                    "Iceborn Gauntlet",
+                    "Infinity Edge",
+                    "Ionian Boots of Lucidity",
+                    "Jaurim's Fist",
+                    "Kindlegem",
+                    "Kircheis Shard",
+                    "Knight's Vow",
+                    "Last Whisper",
+                    "Liandry's Torment",
+                    "Lich Bane",
+                    "Locket of the Iron Solari",
+                    "Long Sword",
+                    "Lord Dominik's Regards",
+                    "Lord Van Damm's Pillager",
+                    "Lost Chapter",
+                    "Luden's Echo",
+                    "Manamune",
+                    "Manamune (Quick Charge)",
+                    "Maw of Malmortius",
+                    "Mejai's Soulstealer",
+                    "Mercurial Scimitar",
+                    "Mercury's Treads",
+                    "Mikael's Crucible",
+                    "Moonflair Spellblade",
+                    "Morellonomicon",
+                    "Mortal Reminder",
+                    "Muramana",
+                    "Muramana",
+                    "Nashor's Tooth",
+                    "Needlessly Large Rod",
+                    "Negatron Cloak",
+                    "Nexus Siege: Siege Weapon Slot",
+                    "Ninja Tabi",
+                    "Nomad's Medallion",
+                    "Null-Magic Mantle",
+                    "Ohmwrecker",
+                    "Oracle Alteration",
+                    "Oracle's Extract",
+                    "Overlord's Bloodmail",
+                    "Perfect Hex Core",
+                    "Phage",
+                    "Phantom Dancer",
+                    "Pickaxe",
+                    "Poacher's Dirk",
+                    "Poro-Snax",
+                    "Port Pad",
+                    "Prototype Hex Core",
+                    "Quicksilver Sash",
+                    "Rabadon's Deathcap",
+                    "Rainbow Snax Party Pack!",
+                    "Raise Morale",
+                    "Randuin's Omen",
+                    "Rapid Firecannon",
+                    "Raptor Cloak",
+                    "Ravenous Hydra",
+                    "Recurve Bow",
+                    "Redemption",
+                    "Refillable Potion",
+                    "Rejuvenation Bead",
+                    "Relic Shield",
+                    "Righteous Glory",
+                    "Rod of Ages",
+                    "Rod of Ages (Quick Charge)",
+                    "Ruby Crystal",
+                    "Ruby Sightstone",
+                    "Runaan's Hurricane",
+                    "Rylai's Crystal Scepter",
+                    "Sanguine Blade",
+                    "Sapphire Crystal",
+                    "Seeker's Armguard",
+                    "Seer Stone (Trinket)",
+                    "Seraph's Embrace",
+                    "Serrated Dirk",
+                    "Sheen",
+                    "Shield Totem",
+                    "Siege Ballista",
+                    "Siege Refund",
+                    "Siege Sight Warder",
+                    "Siege Teleport",
+                    "Siege Teleport (Inactive)",
+                    "Sightstone",
+                    "Skirmisher's Sabre",
+                    "Sorcerer's Shoes",
+                    "Soul Anchor (Trinket)",
+                    "Spectre's Cowl",
+                    "Spellthief's Edge",
+                    "Spirit Visage",
+                    "Stalker's Blade",
+                    "Statikk Shiv",
+                    "Sterak's Gage",
+                    "Stinger",
+                    "Sunfire Cape",
+                    "Super Spicy Snax",
+                    "Sweeping Lens (Trinket)",
+                    "Talisman of Ascension",
+                    "Targon's Brace",
+                    "Tear of the Goddess",
+                    "Tear of the Goddess (Quick Charge)",
+                    "The Black Cleaver",
+                    "The Black Spear",
+                    "The Bloodthirster",
+                    "The Dark Seal",
+                    "The Hex Core mk-1",
+                    "The Hex Core mk-2",
+                    "The Lightbringer",
+                    "Thornmail",
+                    "Tiamat",
+                    "Titanic Hydra",
+                    "Total Biscuit of Rejuvenation",
+                    "Total Biscuit of Rejuvenation",
+                    "Tower: Beam of Ruination",
+                    "Tower: Storm Bulwark",
+                    "Tracker's Knife",
+                    "Trinity Force",
+                    "Vampiric Scepter",
+                    "Vanguard Banner",
+                    "Void Staff",
+                    "Warden's Mail",
+                    "Warding Totem (Trinket)",
+                    "Warmog's Armor",
+                    "Wicked Hatchet",
+                    "Wit's End",
+                    "Wooglet's Witchcap",
+                    "Youmuu's Ghostblade",
+                    "Zeal",
+                    "Zeke's Harbinger",
+                    "Zhonya's Hourglass",
+                    "Zz'Rot Portal");
+            lista.addAll(listAuxiliara);
+            int index = (int) (Math.random() * (lista.size() - 1));
+            cuvant.setText(lista.get(index));
+            listaRezultateString.add(lista.get(index));
+            lista.remove(lista.get(index));
+        }
+
 
         if (MainActivity.getCategorie().equals("Chimie")) {
             List<String> listAuxiliara = Arrays.asList("Actiniu\n (Ac)", "Aluminiu\n (Al)", "Americiu\n (Am)",
@@ -687,12 +1413,21 @@ public class Play extends Activity implements SensorEventListener {
 
             @Override
             public void onFinish() {
-                Intent myIntent = new Intent(Play.this, Rezultate.class);
-                startActivity(myIntent);
+                if (interAd.isLoaded()) {
+                    interAd.show();
+                } else {
+                    Intent myIntent = new Intent(Play.this, Rezultate.class);
+                    startActivity(myIntent);
+                }
             }
         };
         cT.start();
 
+    }
+
+    private void requestNewInterstitial() {
+        AdRequest adRequest = new AdRequest.Builder().build();
+        interAd.loadAd(adRequest);
     }
 
     @Override
@@ -710,31 +1445,6 @@ public class Play extends Activity implements SensorEventListener {
         cT.cancel();
         mp.stop();
     }
-
-    CountDownTimer ctCuloare = new CountDownTimer(500, 1000) {
-        @Override
-        public void onTick(long millisUntilFinished) {
-
-        }
-
-        @Override
-        public void onFinish() {
-            rLayout.setBackgroundColor(culoareDeschisa);
-            linLayout.setBackgroundColor(culoareDeschisa);
-        }
-    };
-
-    CountDownTimer ctWait = new CountDownTimer(1700, 1000) {
-        @Override
-        public void onTick(long millisUntilFinished) {
-            ev = false;
-        }
-
-        @Override
-        public void onFinish() {
-            ev = true;
-        }
-    };
 
     @Override
     public void onSensorChanged(SensorEvent event) {

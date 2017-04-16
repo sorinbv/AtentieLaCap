@@ -1,4 +1,5 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/layoutGrid"
     android:layout_width="match_parent"
@@ -60,7 +61,8 @@
             android:id="@+id/linearLayout1"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:weightSum="1">
 
             <Button
                 android:id="@+id/btnActori"
@@ -84,16 +86,6 @@
                 android:text="ANIMALE"
                 android:textSize="26sp" />
 
-            <Button
-                android:id="@+id/btnCelebritati"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:drawableLeft="@drawable/ic_celebritati"
-                android:gravity="right|center_vertical|center_horizontal"
-                android:paddingLeft="20dp"
-                android:paddingRight="20dp"
-                android:text="CELEBRITĂȚI ROMÂNEȘTI"
-                android:textSize="26sp" />
 
             <Button
                 android:id="@+id/btnCapitale"
@@ -138,6 +130,7 @@
                 android:paddingRight="20dp"
                 android:text="MESERII"
                 android:textSize="26sp" />
+
 
             <Button
                 android:id="@+id/btnPersonaje"
@@ -195,6 +188,28 @@
                 android:textSize="26sp" />
 
             <Button
+                android:id="@+id/btnMasini"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_car"
+                android:gravity="right|center_vertical|center_horizontal"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:text="MAȘINI"
+                android:textSize="26sp" />
+
+            <Button
+                android:id="@+id/btnMortal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_mortal"
+                android:gravity="right|center_vertical|center_horizontal"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:text="MORTAL KOMBAT"
+                android:textSize="26sp" />
+
+            <Button
                 android:id="@+id/btnDota"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -204,6 +219,18 @@
                 android:paddingRight="20dp"
                 android:text="DOTA 2"
                 android:textSize="26sp" />
+
+            <Button
+                android:id="@+id/btnLol"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_lolo"
+                android:gravity="right|center_vertical|center_horizontal"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:text="LEAGUE OF LEGEND"
+                android:textSize="26sp" />
+
 
             <Button
                 android:id="@+id/btnChimie"
@@ -226,6 +253,7 @@
                 android:paddingRight="20dp"
                 android:text="FIZICĂ"
                 android:textSize="26sp" />
+
 
             <Button
                 android:id="@+id/btnMaiMulte"

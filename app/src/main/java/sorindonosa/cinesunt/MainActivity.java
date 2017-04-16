@@ -30,12 +30,15 @@ public class MainActivity extends Activity {
 
     private Button bFb, bStar, bInfo;
     private RelativeLayout rLayout;
-    private Button bAnimale, btnMeserii, btnPlante, btnCelebritati, btnMaiMulte, btnProverbe, btnPersonaje, btnCapitale,
-            btnActori, btnSport, btnEmotii, btnCasnice, btnRock, btnDota, btnChimie;
+    private Button bAnimale, btnMeserii, btnPlante, btnMaiMulte, btnProverbe, btnPersonaje, btnCapitale,
+            btnActori, btnSport, btnEmotii, btnCasnice, btnRock, btnDota, btnChimie, btnLol, btnMortal, btnMasini;
     private static String categorie;
     public static boolean skip = true;
     public static final String PREFS_NAME = "MyPrefsFile1";
     public CheckBox dontShowAgain;
+
+   /* private AdView adView;
+    private AdRequest adRequest;*/
 
     public static String getCategorie() {
         return categorie;
@@ -77,7 +80,7 @@ public class MainActivity extends Activity {
         int culoareFundal = Color.parseColor("#3b3a36");
         int culoareDeschisa = Color.parseColor("#c0dfd9");
         int alb = Color.parseColor("#e9ece5");
-     //   int culoareAccent = Color.parseColor("#FFC107");
+        //   int culoareAccent = Color.parseColor("#FFC107");
         int culoareAccent = Color.parseColor("#0c264f");
 
 
@@ -114,7 +117,7 @@ public class MainActivity extends Activity {
             }
         });
 
-        btnCelebritati = (Button) findViewById(R.id.btnCelebritati);
+/*        btnCelebritati = (Button) findViewById(R.id.btnCelebritati);
         btnCelebritati.setBackgroundColor(culoareDeschisa);
         btnCelebritati.setTextColor(culoareFundal);
         btnCelebritati.setTypeface(typeFace);
@@ -126,10 +129,10 @@ public class MainActivity extends Activity {
                 myIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(myIntent);
             }
-        });
+        });*/
 
         btnCapitale = (Button) findViewById(R.id.btnCapitale);
-        btnCapitale.setBackgroundColor(alb);
+        btnCapitale.setBackgroundColor(culoareDeschisa);
         btnCapitale.setTextColor(culoareFundal);
         btnCapitale.setTypeface(typeFace);
         btnCapitale.setOnClickListener(new OnClickListener() {
@@ -143,7 +146,7 @@ public class MainActivity extends Activity {
         });
 
         btnEmotii = (Button) findViewById(R.id.btnEmotii);
-        btnEmotii.setBackgroundColor(culoareDeschisa);
+        btnEmotii.setBackgroundColor(alb);
         btnEmotii.setTextColor(culoareFundal);
         btnEmotii.setTypeface(typeFace);
         btnEmotii.setOnClickListener(new OnClickListener() {
@@ -157,7 +160,7 @@ public class MainActivity extends Activity {
         });
 
         btnRock = (Button) findViewById(R.id.btnRock);
-        btnRock.setBackgroundColor(alb);
+        btnRock.setBackgroundColor(culoareDeschisa);
         btnRock.setTextColor(culoareFundal);
         btnRock.setTypeface(typeFace);
         btnRock.setOnClickListener(new OnClickListener() {
@@ -171,7 +174,7 @@ public class MainActivity extends Activity {
         });
 
         btnMeserii = (Button) findViewById(R.id.btnMeserii);
-        btnMeserii.setBackgroundColor(culoareDeschisa);
+        btnMeserii.setBackgroundColor(alb);
         btnMeserii.setTextColor(culoareFundal);
         btnMeserii.setTypeface(typeFace);
         btnMeserii.setOnClickListener(new OnClickListener() {
@@ -185,7 +188,7 @@ public class MainActivity extends Activity {
         });
 
         btnPersonaje = (Button) findViewById(R.id.btnPersonaje);
-        btnPersonaje.setBackgroundColor(alb);
+        btnPersonaje.setBackgroundColor(culoareDeschisa);
         btnPersonaje.setTextColor(culoareFundal);
         btnPersonaje.setTypeface(typeFace);
         btnPersonaje.setOnClickListener(new OnClickListener() {
@@ -199,7 +202,7 @@ public class MainActivity extends Activity {
         });
 
         btnPlante = (Button) findViewById(R.id.btnPlante);
-        btnPlante.setBackgroundColor(culoareDeschisa);
+        btnPlante.setBackgroundColor(alb);
         btnPlante.setTextColor(culoareFundal);
         btnPlante.setTypeface(typeFace);
         btnPlante.setOnClickListener(new OnClickListener() {
@@ -213,7 +216,7 @@ public class MainActivity extends Activity {
         });
 
         btnProverbe = (Button) findViewById(R.id.btnProverbe);
-        btnProverbe.setBackgroundColor(alb);
+        btnProverbe.setBackgroundColor(culoareDeschisa);
         btnProverbe.setTextColor(culoareFundal);
         btnProverbe.setTypeface(typeFace);
         btnProverbe.setOnClickListener(new OnClickListener() {
@@ -226,8 +229,12 @@ public class MainActivity extends Activity {
             }
         });
 
+        /*adView = (AdView) findViewById(R.id.adView);
+        adRequest = new AdRequest.Builder().build();
+        adView.loadAd(adRequest);*/
+
         btnSport = (Button) findViewById(R.id.btnSporturi);
-        btnSport.setBackgroundColor(culoareDeschisa);
+        btnSport.setBackgroundColor(alb);
         btnSport.setTextColor(culoareFundal);
         btnSport.setTypeface(typeFace);
         btnSport.setOnClickListener(new OnClickListener() {
@@ -241,7 +248,7 @@ public class MainActivity extends Activity {
         });
 
         btnCasnice = (Button) findViewById(R.id.btnCasnice);
-        btnCasnice.setBackgroundColor(alb);
+        btnCasnice.setBackgroundColor(culoareDeschisa);
         btnCasnice.setTextColor(culoareFundal);
         btnCasnice.setTypeface(typeFace);
         btnCasnice.setOnClickListener(new OnClickListener() {
@@ -254,14 +261,58 @@ public class MainActivity extends Activity {
             }
         });
 
+        btnMasini = (Button) findViewById(R.id.btnMasini);
+        btnMasini.setBackgroundColor(alb);
+        btnMasini.setTextColor(culoareFundal);
+        btnMasini.setTypeface(typeFace);
+        btnMasini.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                categorie = "Masini";
+                Intent myIntent = new Intent(MainActivity.this, Bridge.class);
+                myIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(myIntent);
+            }
+        });
+
+
+        btnMortal = (Button) findViewById(R.id.btnMortal);
+        btnMortal.setBackgroundColor(culoareDeschisa);
+        btnMortal.setTextColor(culoareFundal);
+        btnMortal.setTypeface(typeFace);
+        btnMortal.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                categorie = "Mortal";
+                Intent myIntent = new Intent(MainActivity.this, Bridge.class);
+                myIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(myIntent);
+            }
+        });
+
+
         btnDota = (Button) findViewById(R.id.btnDota);
-        btnDota.setBackgroundColor(culoareDeschisa);
+        btnDota.setBackgroundColor(alb);
         btnDota.setTextColor(culoareFundal);
         btnDota.setTypeface(typeFace);
         btnDota.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 categorie = "Dota";
+                Intent myIntent = new Intent(MainActivity.this, Bridge.class);
+                myIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(myIntent);
+            }
+        });
+
+        btnLol = (Button) findViewById(R.id.btnLol);
+        btnLol.setBackgroundColor(culoareDeschisa);
+        btnLol.setTextColor(culoareFundal);
+        btnLol.setTypeface(typeFace);
+        btnLol.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                categorie = "Lol";
                 Intent myIntent = new Intent(MainActivity.this, Bridge.class);
                 myIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(myIntent);
