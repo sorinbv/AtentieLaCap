@@ -19,23 +19,20 @@ import android.view.View.OnClickListener;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class Bridge extends Activity {
 
+    private TextView poza;
+    private MediaPlayer ding;
+    private CountDownTimer cT;
+    private Button toggle;
+
     public Bridge() {
         super();
     }
-
-    private TextView poza;
-    private RelativeLayout rLayout;
-    private MediaPlayer ding;
-    private CountDownTimer cT;
-    private LinearLayout linLayout;
-    private Button toggle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +48,7 @@ public class Bridge extends Activity {
 
         Typeface typeFace = Typeface.createFromAsset(getAssets(), "fonts/cesar_font.otf");
 
-        poza = (TextView) findViewById(R.id.txtPoza);
+        poza = findViewById(R.id.txtPoza);
         poza.setTypeface(typeFace);
         int culoareAccent = Color.parseColor("#FFC107");
 
@@ -63,21 +60,23 @@ public class Bridge extends Activity {
         // poza.setTextColor(culoareAccent);
         poza.setText(
                 "Înclină telefonul și așează-l pe frunte ca în imagine!" + "\n\n" + "OFERĂ INDICII DESPRE CUVINTE");
-        if (MainActivity.getCategorie().equals("Animale") || MainActivity.getCategorie().equals("Meserii")
-                || MainActivity.getCategorie().equals("Emotii") || MainActivity.getCategorie().equals("Personaje")
-                || MainActivity.getCategorie().equals("Sporturi") || MainActivity.getCategorie().equals("Casnice")) {
-            poza.setText("Înclină telefonul și așează-l pe frunte ca în imagine!" + "\n\n" + "MIMEAZĂ CUVINTELE");
+        if (MainActivity.getCategorie() != null) {
+            if (MainActivity.getCategorie().equals("Animale") || MainActivity.getCategorie().equals("Meserii")
+                    || MainActivity.getCategorie().equals("Emotii") || MainActivity.getCategorie().equals("Personaje")
+                    || MainActivity.getCategorie().equals("Sporturi") || MainActivity.getCategorie().equals("Casnice")) {
+                poza.setText("Înclină telefonul și așează-l pe frunte ca în imagine!" + "\n\n" + "MIMEAZĂ CUVINTELE");
+            }
         }
-        rLayout = (RelativeLayout) findViewById(R.id.ingame);
+        RelativeLayout rLayout = findViewById(R.id.ingame);
         int culoareFundal = Color.parseColor("#3b3a36");
         rLayout.setBackgroundColor(culoareFundal);
         ding = MediaPlayer.create(getApplicationContext(), R.raw.three_seconds);
 
-        linLayout = (LinearLayout) findViewById(R.id.linearLayout1);
+        LinearLayout linLayout = findViewById(R.id.linearLayout1);
         int culoareDeschisa = Color.parseColor("#c0dfd9");
         linLayout.setBackgroundColor(culoareDeschisa);
 
-        toggle = (Button) findViewById(R.id.btnActiveazaRotire);
+        toggle = findViewById(R.id.btnActiveazaRotire);
         toggle.setVisibility(View.GONE);
         if (android.provider.Settings.System.getInt(getContentResolver(), Settings.System.ACCELEROMETER_ROTATION,
                 0) == 0) {

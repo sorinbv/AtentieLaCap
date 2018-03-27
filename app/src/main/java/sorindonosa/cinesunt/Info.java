@@ -17,11 +17,6 @@ import android.widget.TextView;
 
 public class Info extends Activity {
 
-    private TextView tiltUp, tiltDown, bCategorie, bAseaza, bFun, bSucces;
-    private RelativeLayout rLayout;
-    private LinearLayout linLayout;
-    private Button btnPlay;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,12 +27,12 @@ public class Info extends Activity {
         decorView.setSystemUiVisibility(uiOptions);
 
 
-        tiltUp = (TextView) findViewById(R.id.txtUp);
-        tiltDown = (TextView) findViewById(R.id.txtDown);
-        bCategorie = (TextView) findViewById(R.id.txtCategorie);
-        bFun = (TextView) findViewById(R.id.txtFun);
-        bAseaza = (TextView) findViewById(R.id.txtAseaza);
-        bSucces = (TextView) findViewById(R.id.txtSucces);
+        TextView tiltUp = findViewById(R.id.txtUp);
+        TextView tiltDown = findViewById(R.id.txtDown);
+        TextView bCategorie = findViewById(R.id.txtCategorie);
+        TextView bFun = findViewById(R.id.txtFun);
+        TextView bAseaza = findViewById(R.id.txtAseaza);
+        TextView bSucces = findViewById(R.id.txtSucces);
         //	int culoareAccent = Color.parseColor("#FFC107");
         int culoareText = Color.parseColor("#e9ece5");
         int culoareAccent = Color.parseColor("#0c264f");
@@ -45,11 +40,11 @@ public class Info extends Activity {
 
         Typeface typeFace = Typeface.createFromAsset(getAssets(), "fonts/cesar_font.otf");
 
-        rLayout = (RelativeLayout) findViewById(R.id.info);
+        RelativeLayout rLayout = findViewById(R.id.info);
         int culoareFundal = Color.parseColor("#3b3a36");
         rLayout.setBackgroundColor(culoareFundal);
 
-        linLayout = (LinearLayout) findViewById(R.id.linearLayout1);
+        LinearLayout linLayout = findViewById(R.id.linearLayout1);
         int culoareDeschisa = Color.parseColor("#c0dfd9");
         linLayout.setBackgroundColor(culoareDeschisa);
 
@@ -83,7 +78,7 @@ public class Info extends Activity {
         bSucces.setTypeface(typeFace);
         bSucces.setText("■ Distracție plăcută!");
 
-        btnPlay = (Button) findViewById(R.id.btnPlay);
+        Button btnPlay = findViewById(R.id.btnPlay);
         btnPlay.setBackgroundColor(culoareAccent);
         btnPlay.setText("Joacă acum!");
         btnPlay.setTextColor(culoareText);

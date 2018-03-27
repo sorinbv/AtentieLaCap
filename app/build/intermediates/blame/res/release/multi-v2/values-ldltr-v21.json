@@ -1,0 +1,19 @@
+{
+    "logs": [
+        {
+            "outputFile": "/home/sorin.donosa/workspace-Android/AtentieLaCap/app/build/intermediates/incremental/mergeReleaseResources/merged.dir/values-ldltr-v21/values-ldltr-v21.xml",
+            "map": [
+                {
+                    "source": "/home/sorin.donosa/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.0.aar/6c001da26ebc5c0efe90cc413f3c56b3/res/values-ldltr-v21/values-ldltr-v21.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "112",
+                        "endOffsets": "163"
+                    }
+                }
+            ]
+        }
+    ]
+}

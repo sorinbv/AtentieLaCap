@@ -4,14 +4,14 @@
     android:id="@+id/info"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Info" >
+    tools:context=".Info">
 
     <ScrollView
         android:id="@+id/scrollView1"
         android:layout_width="fill_parent"
         android:layout_height="match_parent"
         android:layout_marginBottom="50dp"
-        android:fillViewport="true" >
+        android:fillViewport="true">
 
         <LinearLayout
             android:id="@+id/linearLayout1"
@@ -20,7 +20,7 @@
             android:layout_alignLeft="@+id/btnAnother"
             android:layout_alignRight="@+id/btnFb"
             android:layout_alignTop="@+id/rbAnimale"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/txtCategorie"
@@ -103,7 +103,7 @@
         android:layout_alignLeft="@+id/scrollView1"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="0dp"
-        android:layout_weight="1" >
+        android:layout_weight="1">
 
         <Button
             android:id="@+id/btnPlay"

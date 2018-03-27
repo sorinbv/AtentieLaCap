@@ -2,14 +2,14 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/play"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent">
 
     <ScrollView
         android:id="@+id/scrollView1"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:layout_marginBottom="70dp"
-        android:fillViewport="true" >
+        android:fillViewport="true">
 
         <LinearLayout
             android:id="@+id/linearLayout1"
@@ -18,7 +18,7 @@
             android:layout_alignLeft="@+id/btnAnother"
             android:layout_alignRight="@+id/btnFb"
             android:layout_alignTop="@+id/rbAnimale"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/txtCuvant"

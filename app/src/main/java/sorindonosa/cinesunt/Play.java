@@ -17,6 +17,7 @@ import android.view.WindowManager;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
@@ -28,17 +29,16 @@ import java.util.List;
 
 public class Play extends Activity implements SensorEventListener {
 
-    public static List<String> listaRezultateString = new ArrayList<String>();
-    public static List<Integer> listaRezultateInt = new ArrayList<Integer>();
+    public static List<String> listaRezultateString = new ArrayList<>();
+    public static List<Integer> listaRezultateInt = new ArrayList<>();
     public static int scor;
     LinearLayout linLayout;
     private TextView cuvant, ceas, tip;
     private RelativeLayout rLayout;
     private MediaPlayer mp, sCorect, sPass;
-    private List<String> lista = new ArrayList<String>();
-    private List<String> lista2 = new ArrayList<String>();
+    private List<String> lista = new ArrayList<>();
+    /*  private List<String> lista2 = new ArrayList<>();*/
     private SensorManager sensorMan;
-    private Sensor accelerometer;
     private CountDownTimer cT;
     private boolean ev = true;
     CountDownTimer ctWait = new CountDownTimer(1700, 1000) {
@@ -85,26 +85,27 @@ public class Play extends Activity implements SensorEventListener {
 
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE);
         sensorMan = (SensorManager) getSystemService(SENSOR_SERVICE);
-        accelerometer = sensorMan.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+        Sensor accelerometer = sensorMan.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
         sensorMan.registerListener(this, accelerometer, SensorManager.SENSOR_DELAY_NORMAL);
-        int culoareAccent = Color.parseColor("#FFC107");
-        int culoareFundal = Color.parseColor("#3b3a36");
 
-        cuvant = (TextView) findViewById(R.id.txtCuvant);
+        //int culoareAccent = Color.parseColor("#FFC107");
+        //int culoareFundal = Color.parseColor("#3b3a36");
+
+        cuvant = findViewById(R.id.txtCuvant);
         cuvant.setTypeface(typeFace);
-        tip = (TextView) findViewById(R.id.txtTip);
+        tip = findViewById(R.id.txtTip);
         tip.setTypeface(typeFace);
         tip.setVisibility(View.GONE);
-        ceas = (TextView) findViewById(R.id.txtCeas);
+        ceas = findViewById(R.id.txtCeas);
         ceas.setTypeface(typeFace);
         // cuvant.setTextColor(culoareAccent);
         // ceas.setTextColor(culoareAccent);
         sCorect = MediaPlayer.create(getApplicationContext(), R.raw.corect);
         sPass = MediaPlayer.create(getApplicationContext(), R.raw.pass);
 
-        rLayout = (RelativeLayout) findViewById(R.id.play);
+        rLayout = findViewById(R.id.play);
 
-        linLayout = (LinearLayout) findViewById(R.id.linearLayout1);
+        linLayout = findViewById(R.id.linearLayout1);
 
         linLayout.setBackgroundColor(culoareDeschisa);
         rLayout.setBackgroundColor(culoareDeschisa);
@@ -113,7 +114,6 @@ public class Play extends Activity implements SensorEventListener {
 
         interAd = new InterstitialAd(this);
         interAd.setAdUnitId("ca-app-pub-1675138020340294/8224306365");
-
         interAd.setAdListener(new AdListener() {
             @Override
             public void onAdClosed() {
@@ -127,7 +127,9 @@ public class Play extends Activity implements SensorEventListener {
         AdRequest adRequest = new AdRequest.Builder().build();
         interAd.loadAd(adRequest);
 
-        if (MainActivity.getCategorie().equals("Actori")) {
+        if (MainActivity.getCategorie() == null) {
+            Toast.makeText(getApplicationContext(), "Selectează o categorie!", Toast.LENGTH_SHORT);
+        } else if (MainActivity.getCategorie().equals("Actori")) {
             List<String> listAuxiliara = Arrays.asList("Patrick Swayze", "Kevin Bacon", "Benicio Del Toro",
                     "Harvey Kietel", "Ed Harris", "Willem Dafoe", "Charles Laughton", "Michael Douglas", "James Caan",
                     "Robert Downey Jr.", "Richard Burton", "Alec Guiness", "Geoffrey Rush", "Christopher Lee",
@@ -175,9 +177,7 @@ public class Play extends Activity implements SensorEventListener {
             listaRezultateString.add(lista.get(index));
             String deSters = lista.get(index);
             lista.remove(deSters);
-        }
-
-        if (MainActivity.getCategorie().equals("Animale")) {
+        } else if (MainActivity.getCategorie().equals("Animale")) {
             List<String> listAuxiliara = Arrays.asList("Cal", "Oaie", "Cimpanzeu", "Câine", "Vulpe", "Gorilă", "Babuin",
                     "Urs", "Focă", "Elefant", "Rădașcă", "Șobolan", "Guzgan", "Egretă", "Arici", "Antilopă", "Cămilă",
                     "Pisică", "Cerb", "Leu", "Lup", "Bursuc", "Hipopotam", "Nevăstuică", "Oposum", "Urs Panda", "Zebră",
@@ -203,8 +203,7 @@ public class Play extends Activity implements SensorEventListener {
             listaRezultateString.add(lista.get(index));
             String deSters = lista.get(index);
             lista.remove(deSters);
-        }
-        if (MainActivity.getCategorie().equals("Meserii")) {
+        } else if (MainActivity.getCategorie().equals("Meserii")) {
             List<String> listAuxiliara = Arrays.asList("Profesor", "Casier", "Bucătar", "Frizer", "Programator",
                     "Electrician", "Mecanic auto", "Salvamar", "Contabil", "Fermier", "Arbitru", "Arhitect", "Arhivar",
                     "Armurier", "Asistentă medicală", "Astronom", "Atlet", "Bibliotecar", "Biolog", "Brutar", "Bucătar",
@@ -232,8 +231,7 @@ public class Play extends Activity implements SensorEventListener {
             cuvant.setText(lista.get(index));
             listaRezultateString.add(lista.get(index));
             lista.remove(lista.get(index));
-        }
-        if (MainActivity.getCategorie().equals("Plante")) {
+        } else if (MainActivity.getCategorie().equals("Plante")) {
             List<String> listAuxiliara = Arrays.asList("Cais", "Măr", "Brad", "Stejar", "Arborele de cafea",
                     "Coada calului", "Brusture", "Vișin", "Roșie", "Mesteacăn", "Plop", "Tei", "Castravete", "Afin",
                     "Aloe vera", "Anason", "Ardei iute", "Busuioc", "Castan", "Cătină", "Capere", "Cartof", "Chimen",
@@ -257,9 +255,7 @@ public class Play extends Activity implements SensorEventListener {
             cuvant.setText(lista.get(index));
             listaRezultateString.add(lista.get(index));
             lista.remove(lista.get(index));
-        }
-
-        if (MainActivity.getCategorie().equals("Personaje")) {
+        } else if (MainActivity.getCategorie().equals("Personaje")) {
             List<String> listAuxiliara = Arrays.asList("Homer Simpson", "Bambi", "Bart Simpson", "Grinch", "Batman",
                     "Casper", "Ciocănitoarea Woody", "Daphne\n (Scooby Doo)", "Dick\n (Curse Trăsnite)",
                     "Dino\n (Flintstone)", "Droopy", "Dumbo", "Felix Motanul", "Fred Flintstone",
@@ -379,7 +375,7 @@ public class Play extends Activity implements SensorEventListener {
             lista2.remove(index);
         }*/
 
-        if (MainActivity.getCategorie().equals("Proverbe")) {
+        else if (MainActivity.getCategorie().equals("Proverbe")) {
             List<String> listAuxiliara = Arrays.asList("A ierta e uşor, a uita e greu", "Amânarea e hoţul timpului",
                     "A ajunge cuțitul la os", "A avea ac de cojocul cuiva", "A băga mâna în foc pentru ceva",
                     "A bate apa-n piuă", "Bate fierul cât e cald", "A bate găina cu lanțul", "A călca pe bec",
@@ -450,9 +446,7 @@ public class Play extends Activity implements SensorEventListener {
             cuvant.setTextSize(48);
             listaRezultateString.add(lista.get(index));
             lista.remove(lista.get(index));
-        }
-
-        if (MainActivity.getCategorie().equals("Capitale")) {
+        } else if (MainActivity.getCategorie().equals("Capitale")) {
             List<String> listAuxiliara = Arrays.asList("Austria\n-Viena-", "Anglia\n–Londra-", "Belarus\n–Minsk-",
                     "Belgia\n–Bruxelles-", "Bosnia-Herţegovina\n–Sarajevo-", "Bulgaria\n–Sofia-", "Cehia\n–Praga-",
                     "Cipru\n–Nicosia-", "Croaţia\n–Zagreb-", "Danemarca\n–Copenhaga-", "Elveţia\n–Berna-",
@@ -497,9 +491,7 @@ public class Play extends Activity implements SensorEventListener {
             cuvant.setText(lista.get(index));
             listaRezultateString.add(lista.get(index));
             lista.remove(lista.get(index));
-        }
-
-        if (MainActivity.getCategorie().equals("Sporturi")) {
+        } else if (MainActivity.getCategorie().equals("Sporturi")) {
             List<String> listAuxiliara = Arrays.asList("Aikido", "Alpinism", "Atletism", "Arte marțiale",
                     "Automobilism", "Badminton", "Baschet", "Baseball", "Biatlon", "Biliard", "Bob", "Box", "Bowling",
                     "Bridge", "Caiac-canoe", "Canotaj", "Carting", "Călărie", "Ciclism", "Cricket", "Culturism",
@@ -521,9 +513,7 @@ public class Play extends Activity implements SensorEventListener {
             cuvant.setText(lista.get(index));
             listaRezultateString.add(lista.get(index));
             lista.remove(lista.get(index));
-        }
-
-        if (MainActivity.getCategorie().equals("Emotii")) {
+        } else if (MainActivity.getCategorie().equals("Emotii")) {
             List<String> listAuxiliara = Arrays.asList("Tristeţe", "Descurajare", "Deprimare", "Bucurie", "Plăcere",
                     "Excitare", "Dezgust", "Neîncredere", "Nefericire", "Durere", "Frustrare", "Solitudine", "Frică",
                     "Furie", "Vinovăţie", "Depresie", "Mândrie", "Gelozie", "Auto-compătimire", "Anxietate", "Invidie",
@@ -543,9 +533,7 @@ public class Play extends Activity implements SensorEventListener {
             cuvant.setText(lista.get(index));
             listaRezultateString.add(lista.get(index));
             lista.remove(lista.get(index));
-        }
-
-        if (MainActivity.getCategorie().equals("Casnice")) {
+        } else if (MainActivity.getCategorie().equals("Casnice")) {
             List<String> listAuxiliara = Arrays.asList("Capsator", "Pistol de lipit", "Ac de cusut", "Capse", "Cutter",
                     "Cuțit", "Fierăstrău", "Bormașină", "Pilă", "Perie de sârmă", "Daltă", "Fulculiță", "Șmirghel",
                     "Menghină", "Clește", "Clemă de păr", "Șurubelniță", "Imbus", "Șlefuitor", "Lingură",
@@ -578,9 +566,7 @@ public class Play extends Activity implements SensorEventListener {
             cuvant.setText(lista.get(index));
             listaRezultateString.add(lista.get(index));
             lista.remove(lista.get(index));
-        }
-
-        if (MainActivity.getCategorie().equals("Rock")) {
+        } else if (MainActivity.getCategorie().equals("Rock")) {
             List<String> listAuxiliara = Arrays.asList("Led Zeppelin", "The Beatles", "Pink Floyd", "Queen",
                     "Metallica", "AC/DC", "The Rolling Stones", "Guns N' Roses", "Nirvana", "The Who", "Linkin Park",
                     "Green Day", "Black Sabbath", "Rush", "Iron Maiden", "Red Hot Chili Peppers", "Aerosmith",
@@ -606,9 +592,7 @@ public class Play extends Activity implements SensorEventListener {
             cuvant.setText(lista.get(index));
             listaRezultateString.add(lista.get(index));
             lista.remove(lista.get(index));
-        }
-
-        if (MainActivity.getCategorie().equals("Masini")) {
+        } else if (MainActivity.getCategorie().equals("Masini")) {
             List<String> listAuxiliara = Arrays.asList("Ford Focus",
                     "Ford Fiesta",
                     "Ford Escort",
@@ -846,83 +830,46 @@ public class Play extends Activity implements SensorEventListener {
             cuvant.setText(lista.get(index));
             listaRezultateString.add(lista.get(index));
             lista.remove(lista.get(index));
-        }
-
-        if (MainActivity.getCategorie().equals("Mortal")) {
+        } else if (MainActivity.getCategorie().equals("Mortal")) {
             List<String> listAuxiliara = Arrays.asList("Liu Kang",
-                    "Johnny Cage",
-                    "Kano",
-                    "Raiden",
-                    "Scorpion",
-                    "Sonya Blade",
-                    "Sub-Zero",
-                    "Goro",
-                    "Shang Tsung",
-                    "Reptile",
-                    "Baraka",
+                    "Johnny Cage", "Kano",
+                    "Raiden", "Scorpion",
+                    "Sonya Blade", "Sub-Zero",
+                    "Goro", "Shang Tsung",
+                    "Reptile", "Baraka",
                     "Jax",
                     "Kitana",
                     "Kung Lao",
-                    "Mileena",
-                    "Kintaro",
-                    "Shao Kahn",
-                    "Jade",
-                    "Noob Saibot",
-                    "Smoke",
-                    "Cyrax",
-                    "Sektor",
-                    "Kabal",
-                    "Nightwolf",
-                    "Sindel",
-                    "Sheeva",
-                    "Stryker",
-                    "Motaro",
-                    "Ermac",
-                    "Rain",
-                    "Chameleon",
-                    "Khameleon",
-                    "Fujin",
-                    "Jarek",
-                    "Kai",
-                    "Reiko",
-                    "Tanya",
-                    "Quan Chi",
-                    "Shinnok",
-                    "Meat",
-                    "Blaze",
-                    "Bo' Rai Cho",
-                    "Drahmin",
-                    "Frost",
-                    "Hsu Hao",
-                    "Kenshi",
-                    "Li Mei",
-                    "Mavado",
-                    "Mokap",
-                    "Moloch",
-                    "Nitara",
-                    "Sareena",
-                    "Ashrah",
-                    "Dairou",
-                    "Darrius",
-                    "Havik",
-                    "Hotaru",
-                    "Kira",
-                    "Kobra",
-                    "Onaga",
-                    "Shujinko",
-                    "Daegon",
-                    "Taven",
-                    "Skarlet",
-                    "Cyber Sub-Zero",
-                    "Cassie Cage",
-                    "D'Vorah",
-                    "Erron Black",
-                    "Ferra/Torr",
-                    "Jacqui Briggs",
-                    "Kotal Kahn",
-                    "Kung Jin",
-                    "Takeda",
-                    "Tremor",
+                    "Mileena", "Kintaro",
+                    "Shao Kahn", "Jade",
+                    "Noob Saibot", "Smoke",
+                    "Cyrax", "Sektor",
+                    "Kabal", "Nightwolf",
+                    "Sindel", "Sheeva",
+                    "Stryker", "Motaro",
+                    "Ermac", "Rain",
+                    "Chameleon", "Khameleon",
+                    "Fujin", "Jarek",
+                    "Kai", "Reiko",
+                    "Tanya", "Quan Chi",
+                    "Shinnok", "Meat",
+                    "Blaze", "Bo' Rai Cho",
+                    "Drahmin", "Frost",
+                    "Hsu Hao", "Kenshi",
+                    "Li Mei", "Mavado",
+                    "Mokap", "Moloch",
+                    "Nitara", "Sareena",
+                    "Ashrah", "Dairou",
+                    "Darrius", "Havik",
+                    "Hotaru", "Kira",
+                    "Kobra", "Onaga",
+                    "Shujinko", "Daegon",
+                    "Taven", "Skarlet",
+                    "Cyber Sub-Zero", "Cassie Cage",
+                    "D'Vorah", "Erron Black",
+                    "Ferra/Torr", "Jacqui Briggs",
+                    "Kotal Kahn", "Kung Jin",
+                    "Takeda", "Tremor",
                     "Tri-Borg"
             );
             lista.addAll(listAuxiliara);
@@ -930,9 +877,7 @@ public class Play extends Activity implements SensorEventListener {
             cuvant.setText(lista.get(index));
             listaRezultateString.add(lista.get(index));
             lista.remove(lista.get(index));
-        }
-
-        if (MainActivity.getCategorie().equals("Dota")) {
+        } else if (MainActivity.getCategorie().equals("Dota")) {
             List<String> listAuxiliara = Arrays.asList("Anti-Mage", "Axe", "Crystal Maiden", "Dazzle", "Drow Ranger",
                     "Earthshaker", "Lich", "Lina", "Lion", "Mirana", "Morphling", "Necrophos", "Puck", "Pudge", "Razor",
                     "Sand King", "Shadow Shaman", "Storm Spirit", "Sven", "Tidehunter", "Vengeful Spirit", "Windranger",
@@ -959,10 +904,7 @@ public class Play extends Activity implements SensorEventListener {
             cuvant.setText(lista.get(index));
             listaRezultateString.add(lista.get(index));
             lista.remove(lista.get(index));
-        }
-
-
-        if (MainActivity.getCategorie().equals("Lol")) {
+        } else if (MainActivity.getCategorie().equals("Lol")) {
             List<String> listAuxiliara = Arrays.asList("Aatrox",
                     "Ahri",
                     "Akali",
@@ -1319,10 +1261,106 @@ public class Play extends Activity implements SensorEventListener {
             cuvant.setText(lista.get(index));
             listaRezultateString.add(lista.get(index));
             lista.remove(lista.get(index));
-        }
-
-
-        if (MainActivity.getCategorie().equals("Chimie")) {
+        } else if (MainActivity.getCategorie().equals("Harry")) {
+            List<String> listAuxiliara = Arrays.asList("Hannah Abbott",
+                    "Ludo Bagman", "Bathilda Bagshot", "Marcus Belby",
+                    "Katie Bell", "Cuthbert Binns",
+                    "Phineas Nigellus Black",
+                    "Sirius Black", "Amelia Bones",
+                    "Susan Bones", "Terry Boot ",
+                    "Lavender Brown", "Millicent Bulstrode",
+                    "Charity Burbage", "Frank Bryce",
+                    "Alecto Carrow", "Amycus Carrow",
+                    "Reginald Cattermole", "Mary Cattermole",
+                    "Cho Chang", "Penelope Clearwater",
+                    "Mrs. Cole", "Michael Corner",
+                    "Vincent Crabbe", "Vincent Crabbe",
+                    "Colin Creevey", "Dennis Creevey ",
+                    "Dirk Cresswell", "Bartemius (Barty) Crouch Sr.",
+                    "Bartemius (Barty) Crouch Jr.", "Roger Davies",
+                    "Dawlish", "Fleur Delacour",
+                    "Gabrielle Delacour", "Dedalus Diggle",
+                    "Amos Diggory", "Cedric Diggory",
+                    "Elphias Doge", "Antonin Dolohov",
+                    "Aberforth Dumbledore", "Albus Dumbledore",
+                    "Dudley Dursley", "Marjorie (Marge) Dursley",
+                    "Petunia Dursley", "Vernon Dursley",
+                    "Marietta Edgecombe", "Arabella Figg",
+                    "Argus Filch", "Justin Finch",
+                    "Seamus Finnigan", "Marcus Flint",
+                    "Mundungus Fletcher", "Filius Flitwick",
+                    "Florean Fortescue", "Cornelius Fudge",
+                    "Marvolo Gaunt", "Merope Gaunt", "Morfin Gaunt",
+                    "Anthony Goldstein", "Goyle Sr",
+                    "Gregory Goyle ", "Hermione Granger",
+                    "Gregorovitch", "Fenrir Greyback",
+                    "Gellert Grindelwald", "Wilhelmina Grubbly",
+                    "Astoria Greengrass", "Rubeus Hagrid",
+                    "Madam Hooch", "Mafalda Hopkirk",
+                    "Helga Hufflepuff", "Angelina Johnson",
+                    "Lee Jordan", "Bertha Jorkins",
+                    "Igor Karkaroff", "Viktor Krum",
+                    "Bellatrix Lestrange", "Rabastan Lestrange",
+                    "Rodolphus Lestrange", "Gilderoy Lockhart",
+                    "Alice Longbottom", "Augusta Longbottom",
+                    "Frank Longbottom", "Neville Longbottom",
+                    "Luna Lovegood", "Xenophilius Lovegood",
+                    "Remus Lupin", "Theodore Remus Lupin", "Walden Macnair",
+                    "Draco Malfoy", "Lucius Malfoy",
+                    "Narcissa Malfoy", "Madam Malkin",
+                    "Griselda Marchbanks ", "Olympe Maxime",
+                    "Ernie Macmillan", "Minerva McGonagall",
+                    "Cormac McLaggen", "Graham Montague ",
+                    "Alastor", "Theodore Nott",
+                    "Bob Ogden", "Garrick Ollivander",
+                    "Pansy Parkinson", "Padma Patil",
+                    "Parvati Patil", "Peter Pettigrew",
+                    "Antioch Peverell", "Cadmus Peverell",
+                    "Ignotus Peverell", "Irma Pince",
+                    "Sturgis Podmore", "Poppy Pomfrey",
+                    "Harry Potter", "James Potter", "Lily Potter",
+                    "Quirinus Quirrell", "Helena Ravenclaw/The Grey Lady",
+                    "Rowena Ravenclaw", "Tom Marvolo Riddle",
+                    "Demelza Robins", "Augustus Rookwood",
+                    "Albert Runcorn", "Newt Scamander",
+                    "Rufus Scrimgeour", "Kingsley Shacklebolt",
+                    "Stan Shunpike", "Aurora Sinistra", "Rita Skeeter", "Horace Slughorn",
+                    "Salazar Slytherin",
+                    "Hepzibah Smith", "Zacharias Smith", "Severus Snape",
+                    "Alicia Spinnet", "Pomona Sprout", "Pius Thicknesse",
+                    "Dean Thomas",
+                    "Andromeda Tonks", "Nymphadora Tonks",
+                    "Ted Tonks", "Travers", "Sybill Trelawney",
+                    "Wilky Twycross", "Dolores Jane Umbridge",
+                    "Emmeline Vance", "Romilda Vane",
+                    "Septima Vector", "Lord Voldemort",
+                    "Arthur Weasley", "Bill Weasley", "Charlie Weasley",
+                    "Fred Weasley",
+                    "George Weasley", "Ginny Weasley", "Molly Weasley",
+                    "Myrtle Warren", "Percy Weasley", "Ron Weasley", "Oliver Wood",
+                    "Yaxley", "Blaise Zabini",
+                    "Aragog", "Bane", "Beedle the Bard",
+                    "The Bloody Baron", "Bogrod", "Buckbeak (a.k.a. Witherwings)", "Sir Cadogan",
+                    "Crookshanks",
+                    "Dobby", "Errol", "Fang", "The Fat Friar",
+                    "The Fat Lady", "Fawkes",
+                    "Firenze", "Fluffy", "Grawp",
+                    "Griphook", "Hedwig", "Hokey",
+                    "Kreacher", "Magorian", "Mrs Norris", "Great Aunt Muriel",
+                    "Nagini",
+                    "Nearly Headless Nick", "Norbert/Norberta",
+                    "Peeves",
+                    "Pigwidgeon (Pig)", "Madam Rosmerta",
+                    "Ronan",
+                    "Scabbers",
+                    "Scabior",
+                    "Trevor", "Winky");
+            lista.addAll(listAuxiliara);
+            int index = (int) (Math.random() * (lista.size() - 1));
+            cuvant.setText(lista.get(index));
+            listaRezultateString.add(lista.get(index));
+            lista.remove(lista.get(index));
+        } else if (MainActivity.getCategorie().equals("Chimie")) {
             List<String> listAuxiliara = Arrays.asList("Actiniu\n (Ac)", "Aluminiu\n (Al)", "Americiu\n (Am)",
                     "Argint\n (Ag)", "Argon\n (Ar)", "Arsen\n (As)", "Astatiniu\n (At)", "Aur\n (Au)",
                     "Azot, Nitrogen\n (N)", "Bariu\n (Ba)", "Beriliu\n (Be)", "Berkeliu\n (Bk)", "Bismut\n (Bi)",
@@ -1352,9 +1390,7 @@ public class Play extends Activity implements SensorEventListener {
             cuvant.setText(lista.get(index));
             listaRezultateString.add(lista.get(index));
             lista.remove(lista.get(index));
-        }
-
-        if (MainActivity.getCategorie().equals("Fizica")) {
+        } else if (MainActivity.getCategorie().equals("Fizica")) {
             List<String> listAuxiliara = Arrays.asList("Accelerator de particule", "Accelerație",
                     "Accelerație gravitațională", "Amper", "Amplitudine", "An sideral", "Analiză dimensională",
                     "Antimaterie", "Antiparticulă", "Antiproton", "Apă grea", "Atom", "Boson", "Cameră cu bule",
@@ -1393,6 +1429,177 @@ public class Play extends Activity implements SensorEventListener {
                     "Transformare termodinamică", "Turbiditate", "Turbină cu gaze", "Umiditate", "Undă staționară",
                     "Unitate de măsură", "Vapori", "Vid", "Viscozitate", "Viteza luminii", "Viteza sunetului", "Viteză",
                     "Volt", "Volum", "Zero absolut");
+            lista.addAll(listAuxiliara);
+            int index = (int) (Math.random() * (lista.size() - 1));
+            cuvant.setText(lista.get(index));
+            listaRezultateString.add(lista.get(index));
+            lista.remove(lista.get(index));
+        } else if (MainActivity.getCategorie().equals("Youtube")) {
+            List<String> listAuxiliara = Arrays.asList("IULITM",
+                    "MaxINFINITE",
+                    "iRaphahell",
+                    "Mikey Has",
+                    "Ilie's vlogs",
+                    "Noaptea Târziu",
+                    "Tequila",
+                    "Selly",
+                    "Zｅｒｏ. Mｉｚ-Kｕｎ",
+                    "Codrin Bradea : Satana",
+                    "Vlad Munteanu",
+                    "CreativeMonkeyzArmy",
+                    "xSlayder",
+                    "Lectură DeLaA-LaZ",
+                    "IHATEPINK",
+                    "maxisialtele",
+                    "Throneful",
+                    "maxsipunct",
+                    "Florentin Hriscu",
+                    "Cristi Munteanu",
+                    "ZMENTA Mihai",
+                    "JamilaCuisine",
+                    "Atentie, Cad Mere!",
+                    "Pisica MiauMiau",
+                    "Now You Know",
+                    "Andra Gogan",
+                    "Alexandru Bălan",
+                    "George Buhnici",
+                    "Smiley",
+                    "Bromania",
+                    "Ovvy",
+                    "Doi Degeaba",
+                    "CrysTyRO",
+                    "Motan Show",
+                    "3 Chestii",
+                    "TheLink",
+                    "Bogdan IBMFamily",
+                    "Bogdan Hriscu",
+                    "Trex",
+                    "Orange Blue",
+                    "Mimi",
+                    "Gannicus96",
+                    "Canalul lu' Bercea",
+                    "LikeOne",
+                    "Iuliana Beregoi",
+                    "Andrei Cosmin",
+                    "ZappyTV",
+                    "Adrian POV",
+                    "MsAnneGreen",
+                    "PAIN CANAL VECHI",
+                    "Zaiafet",
+                    "Laura Giurcanu",
+                    "ItsAnca",
+                    "EpicShorty",
+                    "Katy Black",
+                    "5 Pași",
+                    "Vasco Tataru",
+                    "Levi Elekes",
+                    "Junimea",
+                    "10Lucruri.ro",
+                    "Deniz Vural",
+                    "Nelson Mondialu",
+                    "Pineapple Productions",
+                    "CuriosityLand",
+                    "Ghidushii",
+                    "Simion Tomita",
+                    "SergiuHellDragoonHQ",
+                    "Vlad Grigorescu",
+                    "Ionut Rusu",
+                    "Thiefyo",
+                    "Mircea Bravo",
+                    "Andreea Balaban",
+                    "Cristina Kovacs Official",
+                    "Scai",
+                    "TheRealRed",
+                    "BackPackYourLife",
+                    "5 Chestii Interesante",
+                    "Daragiu Alex",
+                    "sector7tv",
+                    "Dilinca",
+                    "Echo",
+                    "XBRAKER",
+                    "Radu Antoniu",
+                    "emymirel",
+                    "ioana114",
+                    "Speedy .RoGamer",
+                    "R0ttby",
+                    "Daniel Pîrvan",
+                    "Lorena Popa",
+                    "ORZAnimale",
+                    "Irina Claudia M",
+                    "EDA Video Blog",
+                    "Marilu",
+                    "SoWTF",
+                    "(Motor)Bike",
+                    "Bogdan Pricope",
+                    "miremi",
+                    "Bobospider",
+                    "Kwik",
+                    "BucharestBIKEtraffic",
+                    "Mariposa",
+                    "vlog the FISH",
+                    "Exploit Music",
+                    "Laura Musuroaea",
+                    "Angelfitness",
+                    "Florentina",
+                    "AdyGio Kitchen",
+                    "Awake Tuber",
+                    "Videotutorial.ro",
+                    "Synx",
+                    "DeadlyGaming266",
+                    "xCretzu",
+                    "SIMA DENISA M.",
+                    "Mademoiselle Lorraine",
+                    "Deli Show",
+                    "ILLIEN",
+                    "Rusu Cristin",
+                    "Darwin md",
+                    "CRJE Comedy",
+                    "EPIC",
+                    "Profesorul Trasnit",
+                    "GREAT!",
+                    "Tutoriale Gratuite",
+                    "Special Koko",
+                    "Georgiana Dumitra",
+                    "Just About ?!",
+                    "Alina Ceusan",
+                    "Poftă Bună cu Gina Bradea",
+                    "Viktor Moozz",
+                    "skivomady",
+                    "Fataluigologan",
+                    "CRISPTOP",
+                    "Cetateanul Turmentat",
+                    "Hayky Vlog",
+                    "Iuda ză Roadrunner",
+                    "Ana Anghelescu",
+                    "Bandit Vlog",
+                    "Neogenesis",
+                    "Faruece",
+                    "DeDe",
+                    "NakedDude",
+                    "Pe Romaneste",
+                    "Horia Sârghi",
+                    "HoriaSan",
+                    "qiMERA",
+                    "Praxis",
+                    "GENIUStin",
+                    "Mariciu SHTOW",
+                    "Oleg Brega, activist civic",
+                    "SmarandaEva",
+                    "The Pretty Blossoms",
+                    "Sanziana Negru",
+                    "Ioana Grama",
+                    "Iulia Andrei",
+                    "La Strada Mare",
+                    "Victoria Giorgiana",
+                    "BurlaculTV",
+                    "Wefx",
+                    "Ariel Constantinof",
+                    "makadobra",
+                    "Julia Hasch Official",
+                    "LouieMoto",
+                    "Pandutzu",
+                    "Bogdan Teches"
+            );
             lista.addAll(listAuxiliara);
             int index = (int) (Math.random() * (lista.size() - 1));
             cuvant.setText(lista.get(index));
@@ -1463,12 +1670,12 @@ public class Play extends Activity implements SensorEventListener {
 
             cuvant.setText(lista.get(index));
 
-            if ((index <= lista2.size()) && (MainActivity.getCategorie().equals("Celebritati"))) {
+           /* if ((index <= lista2.size()) && (MainActivity.getCategorie().equals("Celebritati"))) {
                 tip.setVisibility(View.VISIBLE);
                 tip.setText(lista2.get(index));
             } else {
                 tip.setText("");
-            }
+            }*/
             sCorect.start();
             ev = false;
 
@@ -1476,9 +1683,9 @@ public class Play extends Activity implements SensorEventListener {
 
             listaRezultateString.add(lista.get(index));
             lista.remove(index);
-            if (MainActivity.getCategorie().equals("Celebritati")) {
+            /*if (MainActivity.getCategorie().equals("Celebritati")) {
                 lista2.remove(index);
-            }
+            }*/
             listaRezultateInt.add(1);
             scor = scor + 2;
         }
@@ -1491,20 +1698,20 @@ public class Play extends Activity implements SensorEventListener {
             ctCuloare.start();
 
             cuvant.setText(lista.get(index));
-            if ((index <= lista2.size()) && (MainActivity.getCategorie().equals("Celebritati"))) {
+          /*  if ((index <= lista2.size()) && (MainActivity.getCategorie().equals("Celebritati"))) {
                 tip.setVisibility(View.VISIBLE);
                 tip.setText(lista2.get(index));
             } else {
                 tip.setText("");
-            }
+            }*/
             ev = false;
             ctWait.start();
 
             listaRezultateString.add(lista.get(index));
             lista.remove(index);
-            if (MainActivity.getCategorie().equals("Celebritati")) {
+            /*if (MainActivity.getCategorie().equals("Celebritati")) {
                 lista2.remove(index);
-            }
+            }*/
             listaRezultateInt.add(0);
             scor--;
         }
