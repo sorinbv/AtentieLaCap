@@ -23,6 +23,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import static android.view.View.SYSTEM_UI_FLAG_FULLSCREEN;
+
 public class Bridge extends Activity {
 
     private TextView poza;
@@ -41,23 +43,18 @@ public class Bridge extends Activity {
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         setContentView(R.layout.bridge);
         View decorView = getWindow().getDecorView();
-        int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
-        decorView.setSystemUiVisibility(uiOptions);
-        // ActionBar actionBar = getActionBar();
-        // actionBar.hide();
+        decorView.setSystemUiVisibility(SYSTEM_UI_FLAG_FULLSCREEN);
 
         Typeface typeFace = Typeface.createFromAsset(getAssets(), "fonts/cesar_font.otf");
 
         poza = findViewById(R.id.txtPoza);
         poza.setTypeface(typeFace);
-        int culoareAccent = Color.parseColor("#FFC107");
 
         Drawable drawablePozitie = getResources().getDrawable(R.drawable.pozitie_burned);
         drawablePozitie.setBounds(0, 0, (int) (drawablePozitie.getIntrinsicWidth() * 0.7),
                 (int) (drawablePozitie.getIntrinsicHeight() * 0.7));
         ScaleDrawable sdPozitie = new ScaleDrawable(drawablePozitie, 0, 4, 4);
         poza.setCompoundDrawablesWithIntrinsicBounds(null, sdPozitie.getDrawable(), null, null);
-        // poza.setTextColor(culoareAccent);
         poza.setText(
                 "Înclină telefonul și așează-l pe frunte ca în imagine!" + "\n\n" + "OFERĂ INDICII DESPRE CUVINTE");
         if (MainActivity.getCategorie() != null) {
@@ -109,7 +106,6 @@ public class Bridge extends Activity {
                     toggle.setVisibility(View.GONE);
                     Toast.makeText(Bridge.this, "Rotire ecran ON", Toast.LENGTH_SHORT).show();
                 }
-
 
             }
         });

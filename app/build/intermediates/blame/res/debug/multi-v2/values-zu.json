@@ -4,7 +4,7 @@
             "outputFile": "/home/sorin.donosa/workspace-Android/AtentieLaCap/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-zu/values-zu.xml",
             "map": [
                 {
-                    "source": "/home/sorin.donosa/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.0.aar/6c001da26ebc5c0efe90cc413f3c56b3/res/values-zu/values-zu.xml",
+                    "source": "/home/sorin.donosa/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/26a137a09bc9100d1afa8d25f88bf276/res/values-zu/values-zu.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -21,13 +21,13 @@
                     }
                 },
                 {
-                    "source": "/home/sorin.donosa/.gradle/caches/transforms-1/files-1.1/play-services-ads-12.0.0.aar/3c22c33aa2a123fb66dfbb4eb732dd70/res/values-zu/values.xml",
+                    "source": "/home/sorin.donosa/.gradle/caches/transforms-1/files-1.1/play-services-ads-17.1.0.aar/83c8388a0ebc63c2ad8c1abc7ccd9922/res/values-zu/values.xml",
                     "from": {
                         "startLines": "4,5,6,7,8,9,10",
                         "startColumns": "0,0,0,0,0,0,0",
-                        "startOffsets": "199,275,392,458,523,604,708",
+                        "startOffsets": "197,273,390,456,521,602,706",
                         "endColumns": "75,116,65,64,80,103,74",
-                        "endOffsets": "274,391,457,522,603,707,782"
+                        "endOffsets": "272,389,455,520,601,705,780"
                     },
                     "to": {
                         "startLines": "20,21,22,23,24,25,26",
@@ -38,7 +38,7 @@
                     }
                 },
                 {
-                    "source": "/home/sorin.donosa/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.0.aar/d561db0fc89b187b158ec1827e859d53/res/values-zu/values-zu.xml",
+                    "source": "/home/sorin.donosa/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.1.aar/8af60e0ac460cc4eb7b51fc9ce175fe3/res/values-zu/values-zu.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -55,7 +55,7 @@
                     }
                 },
                 {
-                    "source": "/home/sorin.donosa/.gradle/caches/transforms-1/files-1.1/play-services-basement-12.0.0.aar/eedd5fe9b952332ef806604b9fc97e58/res/values-zu/values.xml",
+                    "source": "/home/sorin.donosa/.gradle/caches/transforms-1/files-1.1/play-services-basement-16.0.1.aar/e13727f15b89efd79968da12d94e420d/res/values-zu/values.xml",
                     "from": {
                         "startLines": "4",
                         "startColumns": "0",

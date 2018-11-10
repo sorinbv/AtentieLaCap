@@ -17,9 +17,6 @@
             android:id="@+id/linearLayout1"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/btnAnother"
-            android:layout_alignRight="@+id/btnFb"
-            android:layout_alignTop="@+id/rbAnimale"
             android:orientation="vertical">
 
             <TextView
@@ -72,8 +69,6 @@
                 android:id="@+id/txtDown"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignLeft="@+id/txtUp"
-                android:layout_below="@+id/txtUp"
                 android:paddingLeft="20dp"
                 android:paddingRight="20dp"
                 android:paddingTop="20dp"
@@ -85,8 +80,6 @@
                 android:id="@+id/txtSucces"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true"
                 android:paddingBottom="20dp"
                 android:paddingLeft="20dp"
                 android:paddingRight="20dp"
@@ -100,21 +93,21 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/scrollView1"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="0dp"
-        android:layout_weight="1">
+        android:layout_marginBottom="0dp">
 
         <Button
             android:id="@+id/btnPlay"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="left"
             android:layout_marginRight="1dp"
             android:layout_weight="1"
             android:height="40dp"
             android:paddingRight="1dp"
-            android:textSize="24sp" />
+            android:textSize="24sp"
+            android:paddingEnd="1dp"
+            android:layout_marginEnd="1dp" />
     </LinearLayout>
 
 </RelativeLayout>

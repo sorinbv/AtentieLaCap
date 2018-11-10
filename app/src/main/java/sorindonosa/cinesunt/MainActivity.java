@@ -31,11 +31,6 @@ public class MainActivity extends Activity {
     private static String categorie;
     public CheckBox dontShowAgain;
 
-    /*private AdView adView;
-    private AdView adView2;
-    private AdRequest adRequest;
-    private AdRequest adRequest2;*/
-
     public static String getCategorie() {
         return categorie;
     }
@@ -50,7 +45,6 @@ public class MainActivity extends Activity {
             final String urlBrowser = "https://www.facebook.com/pages/468583609923299";
             intent.setData(Uri.parse(urlBrowser));
         }
-
         startActivity(intent);
     }
 
@@ -76,9 +70,7 @@ public class MainActivity extends Activity {
         int culoareFundal = Color.parseColor("#3b3a36");
         int culoareDeschisa = Color.parseColor("#c0dfd9");
         int alb = Color.parseColor("#e9ece5");
-        //   int culoareAccent = Color.parseColor("#FFC107");
         int culoareAccent = Color.parseColor("#0c264f");
-
 
         RelativeLayout rLayout = findViewById(R.id.layoutGrid);
         rLayout.setBackgroundColor(culoareFundal);
@@ -224,16 +216,6 @@ public class MainActivity extends Activity {
                 startActivity(myIntent);
             }
         });
-
-        // cele doua reclame din interior
-        /*adView = (AdView) findViewById(R.id.adView);
-        adRequest = new AdRequest.Builder().build();
-        adView.loadAd(adRequest);
-
-        adView2 = (AdView) findViewById(R.id.adView2);
-        adRequest2 = new AdRequest.Builder().build();
-        adView2.loadAd(adRequest2);*/
-
 
         Button btnSport = findViewById(R.id.btnSporturi);
         btnSport.setBackgroundColor(alb);

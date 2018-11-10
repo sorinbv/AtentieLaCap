@@ -26,14 +26,12 @@ public class Info extends Activity {
         int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
         decorView.setSystemUiVisibility(uiOptions);
 
-
         TextView tiltUp = findViewById(R.id.txtUp);
         TextView tiltDown = findViewById(R.id.txtDown);
         TextView bCategorie = findViewById(R.id.txtCategorie);
         TextView bFun = findViewById(R.id.txtFun);
         TextView bAseaza = findViewById(R.id.txtAseaza);
         TextView bSucces = findViewById(R.id.txtSucces);
-        //	int culoareAccent = Color.parseColor("#FFC107");
         int culoareText = Color.parseColor("#e9ece5");
         int culoareAccent = Color.parseColor("#0c264f");
 

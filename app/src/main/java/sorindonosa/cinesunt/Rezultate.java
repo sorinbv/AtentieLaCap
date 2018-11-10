@@ -30,12 +30,8 @@ public class Rezultate extends Activity {
         View decorView = getWindow().getDecorView();
         int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
         decorView.setSystemUiVisibility(uiOptions);
-        // ActionBar actionBar = getActionBar();
-        // actionBar.hide();
 
         Typeface typeFace = Typeface.createFromAsset(getAssets(), "fonts/cesar_font.otf");
-        int culoareFundal = Color.parseColor("#3b3a36");
-        //	int culoareAccent = Color.parseColor("#FFC107");
         int culoareVerde = Color.parseColor("#007000");
         int culoareDeschisa = Color.parseColor("#c0dfd9");
         int culoareAccent = Color.parseColor("#0c264f");
@@ -56,11 +52,6 @@ public class Rezultate extends Activity {
 
         TextView bAnother = (Button) findViewById(R.id.btnAnother);
         bAnother.setBackgroundColor(culoareAccent);
-        /*Drawable drawableFb = getResources().getDrawable(R.drawable.lista_70);
-        drawableFb.setBounds(0, 0, (int) (drawableFb.getIntrinsicWidth() * 0.2),
-				(int) (drawableFb.getIntrinsicHeight() * 0.2));
-		ScaleDrawable sdFb = new ScaleDrawable(drawableFb, 0, 2, 2);
-		bAnother.setCompoundDrawablesWithIntrinsicBounds(null, null, null, sdFb.getDrawable());*/
         bAnother.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -72,11 +63,6 @@ public class Rezultate extends Activity {
 
         TextView bAgain = (Button) findViewById(R.id.btnSame);
         bAgain.setBackgroundColor(culoareAccent);
-		/*Drawable drawablesame = getResources().getDrawable(R.drawable.again_70);
-		drawablesame.setBounds(0, 0, (int) (drawablesame.getIntrinsicWidth() * 0.2),
-				(int) (drawablesame.getIntrinsicHeight() * 0.2));
-		ScaleDrawable sdSame = new ScaleDrawable(drawablesame, 0, 2, 2);
-		bAgain.setCompoundDrawablesWithIntrinsicBounds(null, null, null, sdSame.getDrawable());*/
         bAgain.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -88,11 +74,6 @@ public class Rezultate extends Activity {
 
         TextView bShare = (Button) findViewById(R.id.btnShare);
         bShare.setBackgroundColor(culoareAccent);
-		/*Drawable drawableShare = getResources().getDrawable(R.drawable.share_70);
-		drawableShare.setBounds(0, 0, (int) (drawableShare.getIntrinsicWidth() * 0.2),
-				(int) (drawableShare.getIntrinsicHeight() * 0.2));
-		ScaleDrawable sdShare = new ScaleDrawable(drawableShare, 0, 2, 2);
-		bShare.setCompoundDrawablesWithIntrinsicBounds(null, null, null, sdShare.getDrawable());*/
         bShare.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -32,8 +32,9 @@ public class Play extends Activity implements SensorEventListener {
     public static List<String> listaRezultateString = new ArrayList<>();
     public static List<Integer> listaRezultateInt = new ArrayList<>();
     public static int scor;
-    LinearLayout linLayout;
-    private TextView cuvant, ceas, tip;
+    private LinearLayout linLayout;
+    private TextView cuvant;
+    private TextView ceas;
     private RelativeLayout rLayout;
     private MediaPlayer mp, sCorect, sPass;
     private List<String> lista = new ArrayList<>();
@@ -76,8 +77,6 @@ public class Play extends Activity implements SensorEventListener {
         View decorView = getWindow().getDecorView();
         int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
         decorView.setSystemUiVisibility(uiOptions);
-        // ActionBar actionBar = getActionBar();
-        // actionBar.hide();
         Typeface typeFace = Typeface.createFromAsset(getAssets(), "fonts/cesar_font.otf");
         listaRezultateString.clear();
         listaRezultateInt.clear();
@@ -88,28 +87,20 @@ public class Play extends Activity implements SensorEventListener {
         Sensor accelerometer = sensorMan.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
         sensorMan.registerListener(this, accelerometer, SensorManager.SENSOR_DELAY_NORMAL);
 
-        //int culoareAccent = Color.parseColor("#FFC107");
-        //int culoareFundal = Color.parseColor("#3b3a36");
-
         cuvant = findViewById(R.id.txtCuvant);
         cuvant.setTypeface(typeFace);
-        tip = findViewById(R.id.txtTip);
+        TextView tip = findViewById(R.id.txtTip);
         tip.setTypeface(typeFace);
         tip.setVisibility(View.GONE);
         ceas = findViewById(R.id.txtCeas);
         ceas.setTypeface(typeFace);
-        // cuvant.setTextColor(culoareAccent);
-        // ceas.setTextColor(culoareAccent);
         sCorect = MediaPlayer.create(getApplicationContext(), R.raw.corect);
         sPass = MediaPlayer.create(getApplicationContext(), R.raw.pass);
 
         rLayout = findViewById(R.id.play);
-
         linLayout = findViewById(R.id.linearLayout1);
-
         linLayout.setBackgroundColor(culoareDeschisa);
         rLayout.setBackgroundColor(culoareDeschisa);
-
         mp = MediaPlayer.create(getApplicationContext(), R.raw.final_sound);
 
         interAd = new InterstitialAd(this);
@@ -1655,11 +1646,7 @@ public class Play extends Activity implements SensorEventListener {
 
     @Override
     public void onSensorChanged(SensorEvent event) {
-        float x = event.values[0];
-        float y = event.values[1];
         float z = event.values[2];
-
-        // cuvant.setText(x + "\n" + y + "\n" + z + "\n");
 
         if ((z <= -6.5) && (ev)) {
             sCorect.start();
